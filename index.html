@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouWorld | エグゼクティブのための英語コーチング</title>
+    <meta name="description" content="英語になると主導権が取れない。それは英語力の問題ではない。AIには崩せない圧力と、日本語の行間を英語に変換する力を、実務家のコーチングで。">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        /* ── Design Tokens ─────────────────────────────── */
+        :root {
+            --paper:  #FAFAF7;
+            --white:  #FFFFFF;
+            --ink:    #0C0C0E;
+            --navy:   #0F2056;
+            --gold:   #C4A26A;
+            --mist:   #F2EEE8;
+            --border: #E0DAD2;
+            --mid:    #71717A;
+            --light:  #A8A29E;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: var(--paper);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ── Typography ────────────────────────────────── */
+        .t-display {
+            font-size: clamp(3rem, 7.5vw, 6.5rem);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+        }
+        .t-h2 {
+            font-size: clamp(1.875rem, 3.5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+        }
+        .t-h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+        .t-body {
+            font-size: 0.9375rem;
+            line-height: 1.75;
+            font-weight: 400;
+        }
+        .t-small {
+            font-size: 0.8125rem;
+            line-height: 1.6;
+        }
+
+        /* ── Eyebrow Labels ────────────────────────────── */
+        .eyebrow {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-family: 'Inter', monospace;
+        }
+
+        /* ── Signature: Gold Rule ──────────────────────── */
+        .gold-rule {
+            width: 36px;
+            height: 2.5px;
+            background: var(--gold);
+            border-radius: 2px;
+            display: block;
+        }
+
+        /* ── Signature: Gold Underline on "主導権" ─────── */
+        .key-word {
+            position: relative;
+            display: inline-block;
+            color: var(--navy);
+        }
+        .key-word::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0.06em;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+            opacity: 0.85;
+        }
+
+        /* ── Buttons ───────────────────────────────────── */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--navy);
+            color: #fff;
+            padding: 0.9rem 1.875rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            text-decoration: none;
+            transition: background 0.22s, box-shadow 0.22s, transform 0.22s;
+            letter-spacing: -0.005em;
+        }
+        .btn-primary:hover {
+            background: #1a3470;
+            box-shadow: 0 10px 28px rgba(15, 32, 86, 0.22);
+            transform: translateY(-1px);
+        }
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--ink);
+            padding: 0.875rem 1.875rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            text-decoration: none;
+            border: 1.5px solid var(--border);
+            transition: border-color 0.22s, background 0.22s;
+        }
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            background: rgba(196,162,106,0.04);
+        }
+
+        /* ── Cards ─────────────────────────────────────── */
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        .card:hover {
+            border-color: rgba(196,162,106,0.45);
+            box-shadow: 0 12px 32px rgba(15, 32, 86, 0.07);
+        }
+
+        /* ── Navigation ────────────────────────────────── */
+        .nav-link {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--mid);
+            text-decoration: none;
+            transition: color 0.18s;
+            letter-spacing: 0.01em;
+        }
+        .nav-link:hover { color: var(--navy); }
+
+        /* ── Section backgrounds ───────────────────────── */
+        .bg-paper { background-color: var(--paper); }
+        .bg-mist  { background-color: var(--mist); }
+        .bg-white { background-color: var(--white); }
+        .bg-navy  { background-color: var(--navy); }
+
+        /* ── Audience list items ────────────────────────── */
+        .audience-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .audience-num {
+            font-family: 'Inter', monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+            margin-top: 3px;
+            flex-shrink: 0;
+            width: 1.5rem;
+        }
+
+        /* ── Service rows ───────────────────────────────── */
+        .service-item {
+            padding: 1.875rem 0;
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .service-item { grid-template-columns: 1fr; gap: 0.75rem; }
+        }
+
+        /* ── Comparison table ───────────────────────────── */
+        .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+        .compare-table th, .compare-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+        }
+        .compare-table th {
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--mid);
+            background: var(--mist);
+        }
+        .compare-table td:first-child { font-weight: 600; color: var(--ink); }
+        .compare-table td:not(:first-child) { color: var(--mid); text-align: center; }
+        .compare-table .yw-col { background: rgba(15,32,86,0.03); font-weight: 700 !important; color: var(--navy) !important; }
+        .compare-table th.yw-col { background: var(--navy); color: #fff !important; }
+        .compare-table tr:last-child td { border-bottom: none; }
+
+        /* ── Hero ambient bg ────────────────────────────── */
+        .hero-ambient {
+            position: absolute;
+            top: 0; right: 0;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 40%, var(--mist) 100%);
+            pointer-events: none;
+        }
+
+        /* ── Scroll indicator ───────────────────────────── */
+        @keyframes scrollPulse {
+            0%, 100% { transform: scaleY(0.5); opacity: 0.3; }
+            50%       { transform: scaleY(1);   opacity: 0.7; }
+        }
+        .scroll-line {
+            width: 1px;
+            height: 48px;
+            background: var(--ink);
+            transform-origin: top;
+            animation: scrollPulse 1.8s ease-in-out infinite;
+        }
+
+        /* ── Fade-up reveal ─────────────────────────────── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fu  { animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both; }
+        .fu1 { animation-delay: 0.08s; }
+        .fu2 { animation-delay: 0.18s; }
+        .fu3 { animation-delay: 0.28s; }
+        .fu4 { animation-delay: 0.38s; }
+
+        /* ── Why-Human highlight box ─────────────────────── */
+        .why-box {
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.25rem;
+            background: rgba(196,162,106,0.05);
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* ── Profile photo placeholder ──────────────────── */
+        .photo-placeholder {
+            background: linear-gradient(145deg, #E8E3DB, #CEC8BF);
+            display: flex; align-items: center; justify-content: center;
+            color: #A8A29E; font-size: 0.6875rem; font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════ -->
+<header id="site-nav" class="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#E0DAD2]/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="#top" class="flex items-center gap-2.5 shrink-0">
+            <img src="YouWorlodlogo.png" alt="YouWorld" class="h-7 w-auto" onerror="this.style.display='none'">
+            <span style="font-size:1rem;font-weight:900;letter-spacing:-0.02em;color:var(--ink);">YouWorld</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-7">
+            <a href="#audience"   class="nav-link">こんな方へ</a>
+            <a href="#cases"      class="nav-link">事例</a>
+            <a href="#value"      class="nav-link">なぜ YouWorld</a>
+            <a href="#services"   class="nav-link">扱うこと</a>
+            <a href="#comparison" class="nav-link">違い</a>
+            <a href="#company"    class="nav-link">スクール概要</a>
+        </nav>
+
+        <a href="#contact" class="hidden md:inline-flex btn-primary" style="padding:0.55rem 1.25rem;font-size:0.8125rem;">
+            無料相談
+        </a>
+
+        <button onclick="document.getElementById('mob').classList.toggle('hidden')" class="md:hidden p-2 rounded-lg hover:bg-[#F2EEE8] transition-colors" aria-label="メニュー">
+            <svg class="w-5 h-5 text-[#0C0C0E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+    </div>
+
+    <div id="mob" class="hidden md:hidden bg-white border-t border-[#E0DAD2]/60 px-4 py-3">
+        <div class="flex flex-col gap-0.5">
+            <a href="#audience"   onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">こんな方へ</a>
+            <a href="#cases"      onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">事例</a>
+            <a href="#value"      onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">なぜ YouWorld</a>
+            <a href="#services"   onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">扱うこと</a>
+            <a href="#comparison" onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">違い</a>
+            <a href="#company"    onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">スクール概要</a>
+            <a href="#contact"    onclick="document.getElementById('mob').classList.add('hidden')" class="mt-2 btn-primary text-center justify-center">無料相談を申し込む</a>
+        </div>
+    </div>
+</header>
+
+
+<main>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="top" class="relative min-h-screen flex flex-col justify-center pt-16 overflow-hidden bg-paper">
+    <div class="hero-ambient"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
+        <div class="max-w-3xl">
+
+            <span class="eyebrow mb-7 block fu">グローバルエリートのための次世代英語コーチング</span>
+
+            <h1 class="t-display text-[var(--ink)] mb-7 fu fu1">
+                英語になると、<br>
+                <span class="key-word">主導権</span>が<br>
+                取れなくなる。
+            </h1>
+
+            <div class="flex items-center gap-4 mb-8 fu fu2">
+                <span class="gold-rule"></span>
+                <p class="t-small text-[var(--mid)] font-semibold tracking-wide uppercase" style="font-size:0.6875rem;letter-spacing:0.08em;">
+                    それは英語力の問題ではない
+                </p>
+            </div>
+
+            <p class="t-body text-[var(--mid)] max-w-xl mb-10 fu fu2" style="font-size:1.0625rem;line-height:1.8;">
+                AIを使えば資料を整えることも、想定問答を作ることもできる。<br>
+                それでも本番で押し切られる理由は二つある。<br>
+                <strong style="color:var(--ink);">AIには崩せない。そしてAIには、日本語の行間が見えない。</strong>
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 fu fu3">
+                <a href="#contact" class="btn-primary">
+                    詰まりポイントを無料で可視化する
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <a href="#cases" class="btn-ghost">
+                    クライアント事例を見る
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+        <div class="scroll-line"></div>
+        <span style="font-size:0.5625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--light);">Scroll</span>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     AUDIENCE
+══════════════════════════════════════════ -->
+<section id="audience" class="py-24 md:py-32 bg-white border-t border-[#E0DAD2]/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+
+            <!-- Left: heading sticky -->
+            <div class="lg:col-span-4 lg:sticky lg:top-28">
+                <span class="eyebrow block mb-5">こんな方へ</span>
+                <h2 class="t-h2 text-[var(--ink)] mb-5">
+                    準備は<br>十分。<br>
+                </h2>
+                <span class="gold-rule mb-5 block"></span>
+                <p class="t-body text-[var(--mid)]">
+                    英語力ではなく、英語ビジネス文化での「立ち回り」に課題を感じている方へ。
+                </p>
+            </div>
+
+            <!-- Right: list -->
+            <div class="lg:col-span-8">
+                <div class="audience-item" style="border-top:1px solid var(--border);">
+                    <span class="audience-num">01</span>
+                    <p class="t-body font-semibold text-[var(--ink)]">AIを使っても、解決しなかった。</p>
+                </div>
+                <div class="audience-item">
+                    <span class="audience-num">02</span>
+                    <p class="t-body font-semibold text-[var(--ink)]">資料の構成は整えた。それでも会議で押し切られる。</p>
+                </div>
+                <div class="audience-item">
+                    <span class="audience-num">03</span>
+                    <p class="t-body font-semibold text-[var(--ink)]">メールの表現は直した。それでも交渉が前に進まない。</p>
+                </div>
+                <div class="audience-item">
+                    <span class="audience-num">04</span>
+                    <p class="t-body font-semibold text-[var(--ink)]">AIに翻訳させた。それでも英語側の相手には刺さらなかった。</p>
+                </div>
+                <div class="audience-item">
+                    <span class="audience-num">05</span>
+                    <p class="t-body font-semibold text-[var(--ink)]">想定問答は準備した。それでも面接で崩される。</p>
+                </div>
+                <div class="audience-item" style="border-bottom:none;">
+                    <span class="audience-num">06</span>
+                    <p class="t-body font-semibold text-[var(--ink)]">海外法人をマネジメントしているが、組織が思うように動かない。</p>
+                </div>
+
+                <!-- Callout -->
+                <div class="mt-8 p-7 bg-[var(--navy)] rounded-2xl">
+                    <p class="text-white font-bold" style="font-size:1.0625rem;line-height:1.65;">
+                        問題は、<span style="color:var(--gold);">何が問題かがまだ見えていない</span>ことだ。
+                    </p>
+                    <p class="text-white/60 t-small mt-2 font-medium">準備の量でも、英語力そのものでもない。原因を一緒に可視化します。</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CASES
+══════════════════════════════════════════ -->
+<section id="cases" class="py-24 md:py-32 bg-mist border-t border-[#E0DAD2]/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        <div class="mb-14">
+            <span class="eyebrow block mb-4">Case Studies</span>
+            <h2 class="t-h2 text-[var(--ink)] mb-4 max-w-2xl">
+                変わったのは、<br>英語ではなく「立ち位置」。
+            </h2>
+            <span class="gold-rule block"></span>
+        </div>
+
+        <!-- Featured case -->
+        <div class="bg-white rounded-3xl border border-[#E0DAD2] p-8 md:p-10 mb-8">
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-8 pb-7 border-b border-[#E0DAD2]">
+                <div>
+                    <span class="eyebrow block mb-1">Special Interview</span>
+                    <h3 style="font-size:1.125rem;font-weight:800;color:var(--ink);">オランダ法人代表 J.A.様</h3>
+                </div>
+                <p class="t-small font-bold text-[var(--mid)] sm:text-right max-w-xs">
+                    「英語はできる。微調整を重ねても重要な場面で押し切られていた。」
+                </p>
+            </div>
+
+            <p class="t-body text-[var(--mid)] mb-5">
+                20年以上商社に勤め、現在はオランダ法人の代表を務めています。組織づくり・難易度の高い契約・現地社員との交渉といった重要な場面で、思うように相手を動かせず歯がゆさを感じていました。
+            </p>
+            <p class="t-body text-[var(--mid)] mb-5">
+                コーチングを通じて、ヨーロッパのクライアントやスタッフとの「すれ違い」「議論の噛み合わなさ」が把握できるように。以前よりも短時間で、クリアに意思決定が進むようになりました。
+            </p>
+            <p class="t-body font-bold text-[var(--ink)] mb-7">
+                振り返ると、私に必要だったのは英語力そのものではなく、「相手を動かすためのリードの方法、そして伝え方」だったのだと思います。
+            </p>
+
+            <div class="why-box">
+                <span class="eyebrow block mb-1.5" style="color:var(--gold);">Why Human Coaching Over AI</span>
+                <p class="t-small text-[var(--mid)]">日本語のビジネスコミュニケーションは「相手が文脈を読んでくれる」前提で成り立っている。しかしヨーロッパのビジネス現場にその前提はない。「すれ違い」の多くはこの構造的な違いから来ていた。AIは翻訳できる。しかし「この伝え方、ヨーロッパ人にはこう聞こえています」という指摘は、両文化を実際に生きた人間でないとできない。</p>
+            </div>
+        </div>
+
+        <!-- Two cases grid -->
+        <div class="grid md:grid-cols-2 gap-6">
+
+            <div class="card p-7 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-6 pb-5 border-b border-[#E0DAD2]">
+                        <div style="width:36px;height:36px;background:#EEF2FF;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+                            <svg class="w-4 h-4 text-[#4F46E5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <div>
+                            <span class="eyebrow" style="font-size:0.625rem;">再生可能エネルギーJV</span>
+                            <p style="font-size:0.875rem;font-weight:700;color:var(--ink);">日本側マネージャー</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 t-small text-[var(--mid)]">
+                        <p><span class="font-bold text-[var(--ink)]">課題：</span>会議が毎回「資料確認」で終わり、本来の目的である予算獲得の議論に入れなかった。</p>
+                        <p><span class="font-bold text-[var(--ink)]">原因：</span>資料がどこへ着地させたいのかが明確になっていなかった。</p>
+                        <p><span class="font-bold text-[var(--ink)]">改善：</span>「現状→課題→対策→期待成果→その為に必要と考えていること」の流れに再設計。</p>
+                        <p class="font-bold text-[var(--navy)]">結果：資料確認の時間が減少し、予算・投資判断の議論へ進めるようになった。</p>
+                    </div>
+                </div>
+                <div class="why-box mt-6">
+                    <span class="eyebrow block mb-1" style="font-size:0.5625rem;">Why Human Coaching</span>
+                    <p class="t-small text-[var(--mid)]">日本式の資料構造が英語圏の会議では「で、何が言いたいのか」と受け取られる。AIはこの異文化間の構造のズレを自発的には指摘しない。</p>
+                </div>
+            </div>
+
+            <div class="card p-7 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-6 pb-5 border-b border-[#E0DAD2]">
+                        <div style="width:36px;height:36px;background:#F5F3FF;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+                            <svg class="w-4 h-4 text-[#7C3AED]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <div>
+                            <span class="eyebrow" style="font-size:0.625rem;">外資系コスメメーカー</span>
+                            <p style="font-size:0.875rem;font-weight:700;color:var(--ink);">営業マネージャー</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 t-small text-[var(--mid)]">
+                        <p><span class="font-bold text-[var(--ink)]">課題：</span>APAC統括責任者への四半期報告で、毎回「何が言いたいのか分からない」と指摘されていた。</p>
+                        <p><span class="font-bold text-[var(--ink)]">原因：</span>資料が日本向けの構造。「なぜそうなったか・何をしたか・次に何をすべきか」が整理されていなかった。</p>
+                        <p><span class="font-bold text-[var(--ink)]">改善：</span>「業績→原因分析→実施施策→次のアクション→担当者の見解」に再設計。</p>
+                        <p class="font-bold text-[var(--navy)]">結果：報告会議が前向きな議論の場へ変化した。</p>
+                    </div>
+                </div>
+                <div class="why-box mt-6">
+                    <span class="eyebrow block mb-1" style="font-size:0.5625rem;">Why Human Coaching</span>
+                    <p class="t-small text-[var(--mid)]">日本語では行間に散りばめられた判断が伝わるが、英語圏では一箇所にまとめられていなければ「存在しない」と受け取られる。</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     VALUE / WHY YOUWORLD
+══════════════════════════════════════════ -->
+<section id="value" class="py-24 md:py-32 bg-white border-t border-[#E0DAD2]/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        <div class="mb-16 max-w-2xl">
+            <span class="eyebrow block mb-4">なぜ YouWorld</span>
+            <h2 class="t-h2 text-[var(--ink)] mb-5">
+                AIは、あなたを<br>崩せない。
+            </h2>
+            <span class="gold-rule block mb-5"></span>
+            <p class="t-body text-[var(--mid)]">
+                AIで準備は高度化できる。しかし「本番と同じ圧力」「経験者の即時判断」「日本語の行間を変換する目線」は、両文化を生きた人間との対話からしか得られない。
+            </p>
+        </div>
+
+        <!-- 3 value cards -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+
+            <div class="card p-7">
+                <span class="eyebrow block mb-4">AI Can't · 01</span>
+                <h3 class="t-h3 text-[var(--ink)] mb-3">予測不能な圧力を<br>かけること</h3>
+                <p class="t-small text-[var(--mid)] leading-relaxed">
+                    AIとの模擬面接はどこか予測可能だ。AIは親切で、ある程度こちらの文脈を汲んでくれる。しかし本番の面接官は違う。弱いところを突いてくる。本番と同じ緊張感は、本番と似た人間との対話からしか生まれない。
+                </p>
+            </div>
+
+            <div class="card p-7">
+                <span class="eyebrow block mb-4">AI Can't · 02</span>
+                <h3 class="t-h3 text-[var(--ink)] mb-3">「この場合の判断」を<br>即座に示すこと</h3>
+                <p class="t-small text-[var(--mid)] leading-relaxed">
+                    「その交渉、私ならそこで降りてます」「その言い方、欧米の役員には不遜に聞こえます」——AIは確率的に「よくある答え」を返す。しかし経験者は例外を知っている。その即時判断が致命的な差になる。
+                </p>
+            </div>
+
+            <div class="card p-7 sm:col-span-2 lg:col-span-1">
+                <span class="eyebrow block mb-4">AI Can't · 03</span>
+                <h3 class="t-h3 text-[var(--ink)] mb-3">日本語の行間を<br>英語に変換すること</h3>
+                <p class="t-small text-[var(--mid)] leading-relaxed">
+                    日本語は「相手が空気を読んでくれる」前提で設計されている。英語圏にその前提はない。だから同じ内容を翻訳しても「YesなのかNoなのか」となる。AIは指示がなければこの構造のズレを修正できない。
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Coaches -->
+        <div class="border-t border-[#E0DAD2] pt-16">
+            <div class="mb-10">
+                <span class="eyebrow block mb-4">Coach Profiles</span>
+                <h3 class="t-h2 text-[var(--ink)] mb-3" style="font-size:clamp(1.5rem,3vw,2.25rem);">
+                    YouWorldのコーチ陣は、<br>英語教師ではありません。
+                </h3>
+                <p class="t-body text-[var(--mid)] max-w-2xl">
+                    実際に外資系企業での経営・交渉・海外駐在・受験指導など、それぞれの現場を知る実務家です。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Coach: Sato -->
+                <div class="card overflow-hidden group">
+                    <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
+                        <img src="Sato講師.png" alt="Sato Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
+                    </div>
+                    <div class="p-6">
+                        <span class="eyebrow block mb-1">経営コンサル×エグゼクティブ英語</span>
+                        <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Sato コーチ</h4>
+                        <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込9,900円 / 1回60分</p>
+                        <p class="t-small text-[var(--mid)] leading-relaxed">実践で通用する英語力を、ビジネス最前線のノウハウで伝授。役員会・国際交渉・多国籍チームマネジメントに強い実務家です。</p>
+                        <div class="flex flex-wrap gap-1.5 mt-4">
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">役員会英語</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">交渉戦略</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">組織マネジメント</span>
+                        </div>
+                        <a href="https://drive.google.com/file/d/18kUZHC6nJjGJfQvjY_glv2yK6CX2ARn7/view?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">
+                            詳しいプロフィールを見る
+                            <svg style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coach: Shiota -->
+                <div class="card overflow-hidden group">
+                    <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
+                        <img src="Shiota講師.png" alt="Shiota Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
+                    </div>
+                    <div class="p-6">
+                        <span class="eyebrow block mb-1">海外駐在ビジネス英語</span>
+                        <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Shiota コーチ</h4>
+                        <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込8,800円 / 1回60分</p>
+                        <p class="t-small text-[var(--mid)] leading-relaxed">22年の海外駐在経験から、実践で使えるビジネス英語と交渉力を伝授。現地スタッフとの関係構築・異文化コミュニケーションが専門です。</p>
+                        <div class="flex flex-wrap gap-1.5 mt-4">
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">海外駐在準備</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">交渉英語</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">異文化理解</span>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1qFFcblP1ZakdqYXg1MwrDhaEkiu32ZTF/view?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">
+                            詳しいプロフィールを見る
+                            <svg style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coach: Kuno -->
+                <div class="card overflow-hidden group">
+                    <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
+                        <img src="Kuno講師.png" alt="Kuno Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
+                    </div>
+                    <div class="p-6">
+                        <span class="eyebrow block mb-1">ビジネス英語×受験英語</span>
+                        <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Kuno コーチ</h4>
+                        <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込7,700円 / 1回60分</p>
+                        <p class="t-small text-[var(--mid)] leading-relaxed">グローバルビジネスから難関大学受験まで対応。スピーキング・リスニングを軸に、英検・IELTSなど資格試験対策にも強みがあります。</p>
+                        <div class="flex flex-wrap gap-1.5 mt-4">
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">ビジネス英語</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">大学受験対策</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">英検・IELTS</span>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1xjt4EyruENpHQ3vPLDJ0_VGty6mlS8CM/view?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">
+                            詳しいプロフィールを見る
+                            <svg style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coach: Kaneko -->
+                <div class="card overflow-hidden group">
+                    <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
+                        <img src="Kaneko講師.png" alt="Kaneko Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
+                    </div>
+                    <div class="p-6">
+                        <span class="eyebrow block mb-1">英会話全般×学習サポート</span>
+                        <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Kaneko コーチ</h4>
+                        <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込7,700円 / 1回60分</p>
+                        <p class="t-small text-[var(--mid)] leading-relaxed">初心者からシニアまで幅広い年齢層を指導。TOEIC対策に加え、学習モチベーションの維持や長期学習計画の伴走も得意です。</p>
+                        <div class="flex flex-wrap gap-1.5 mt-4">
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">英会話全般</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">TOEIC対策</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">学習サポート</span>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1KhnkMGmxVLzf7MvX5KVOujxOup3n7nSY/view?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">
+                            詳しいプロフィールを見る
+                            <svg style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coach: Iguchi -->
+                <div class="card overflow-hidden group">
+                    <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
+                        <img src="Iguchi講師.png" alt="Iguchi Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
+                    </div>
+                    <div class="p-6">
+                        <span class="eyebrow block mb-1">航空業界英語×海外実務</span>
+                        <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Iguchi コーチ</h4>
+                        <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込7,700円 / 1回60分</p>
+                        <p class="t-small text-[var(--mid)] leading-relaxed">"空の現場"で磨いた英語力を指導。旅行英会話や海外マナーに加え、航空業界志望者向けの業界英語・面接対策にも対応します。</p>
+                        <div class="flex flex-wrap gap-1.5 mt-4">
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">旅行英会話</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">航空業界対策</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">面接練習</span>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1ZBpO5eghf1FdkdAQal_RG1hSY54HUSg6/view?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">
+                            詳しいプロフィールを見る
+                            <svg style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coach: Urasaki -->
+                <div class="card overflow-hidden group">
+                    <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
+                        <img src="Urasaki講師.png" alt="Urasaki Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
+                    </div>
+                    <div class="p-6">
+                        <span class="eyebrow block mb-1">受験英語×資格試験対策</span>
+                        <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Urasaki コーチ</h4>
+                        <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込7,700円 / 1回60分</p>
+                        <p class="t-small text-[var(--mid)] leading-relaxed">受験から国際会議まで通用する英語力を指導。英検・TOEIC・TOEFL対策や、個別目標に応じた柔軟なカリキュラムが強みです。</p>
+                        <div class="flex flex-wrap gap-1.5 mt-4">
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">受験英語</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">資格試験対策</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">4技能総合指導</span>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1R4AJ8mgsLxJD-rjzFOUlXM5XsUGEn5_J/view?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">
+                            詳しいプロフィールを見る
+                            <svg style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="mt-8 t-small text-[var(--light)] text-center italic">
+                AIで多くの英語課題が解決できる昨今、それでも得られない解決は「英語でその場をくぐってきた人間」との対話にあります。
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SERVICES
+══════════════════════════════════════════ -->
+<section id="services" class="py-24 md:py-32 bg-mist border-t border-[#E0DAD2]/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+                <span class="eyebrow block mb-4">What We Handle</span>
+                <h2 class="t-h2 text-[var(--ink)]">
+                    「準備する」から<br>「本番で動ける」へ。
+                </h2>
+            </div>
+            <p class="t-small text-[var(--mid)] max-w-xs md:text-right pb-1">
+                扱うのは英語ではなく、本番のシーン。<br>崩されながら、身につける。
+            </p>
+        </div>
+
+        <!-- Cards grid: 3 + 2 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+
+            <!-- Card 1 -->
+            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col justify-between group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300" style="min-height:220px;">
+                <span class="eyebrow mb-5 block">Scene 01 · 会議</span>
+                <div>
+                    <p style="font-size:0.9375rem;font-weight:500;color:var(--mid);margin-bottom:0.5rem;">「発言する」</p>
+                    <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.5rem;">
+                        <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        <span style="font-size:0.6875rem;color:var(--light);font-style:italic;">反論・脱線・宙に浮く決定——圧力下で動く</span>
+                    </div>
+                    <p style="font-size:1.125rem;font-weight:800;color:var(--navy);letter-spacing:-0.02em;">「場を動かせる」</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col justify-between group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300" style="min-height:220px;">
+                <span class="eyebrow mb-5 block">Scene 02 · 交渉</span>
+                <div>
+                    <p style="font-size:0.9375rem;font-weight:500;color:var(--mid);margin-bottom:0.5rem;">「押し切られない」</p>
+                    <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.5rem;">
+                        <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        <span style="font-size:0.6875rem;color:var(--light);font-style:italic;">降りない相手との壁打ちで判断力を磨く</span>
+                    </div>
+                    <p style="font-size:1.125rem;font-weight:800;color:var(--navy);letter-spacing:-0.02em;">「主導権を握れる」</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col justify-between group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300 sm:col-span-2 lg:col-span-1" style="min-height:220px;">
+                <span class="eyebrow mb-5 block">Scene 03 · マネジメント</span>
+                <div>
+                    <p style="font-size:0.9375rem;font-weight:500;color:var(--mid);margin-bottom:0.5rem;">「伝える」</p>
+                    <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.5rem;">
+                        <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        <span style="font-size:0.6875rem;color:var(--light);font-style:italic;">「理解した」のに動かない原因を特定する</span>
+                    </div>
+                    <p style="font-size:1.125rem;font-weight:800;color:var(--navy);letter-spacing:-0.02em;">「動いてもらえる」</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            <!-- Card 4 -->
+            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col justify-between group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300" style="min-height:220px;">
+                <span class="eyebrow mb-5 block">Scene 04 · プレゼン</span>
+                <div>
+                    <p style="font-size:0.9375rem;font-weight:500;color:var(--mid);margin-bottom:0.5rem;">「説明する」</p>
+                    <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.5rem;">
+                        <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        <span style="font-size:0.6875rem;color:var(--light);font-style:italic;">意思決定者役が詰める——その場で見解を出す訓練</span>
+                    </div>
+                    <p style="font-size:1.125rem;font-weight:800;color:var(--navy);letter-spacing:-0.02em;">「崩れない」</p>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col justify-between group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300" style="min-height:220px;">
+                <span class="eyebrow mb-5 block">Scene 05 · キャリア・面接</span>
+                <div>
+                    <p style="font-size:0.9375rem;font-weight:500;color:var(--mid);margin-bottom:0.5rem;">「想定問答を作る」</p>
+                    <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.5rem;">
+                        <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        <span style="font-size:0.6875rem;color:var(--light);font-style:italic;">採用経験者が意図的に崩す——準備を本番に変える</span>
+                    </div>
+                    <p style="font-size:1.125rem;font-weight:800;color:var(--navy);letter-spacing:-0.02em;">「自分の言葉で返せる」</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     COMPARISON
+══════════════════════════════════════════ -->
+<section id="comparison" class="py-24 md:py-32 bg-white border-t border-[#E0DAD2]/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        <div class="mb-14 max-w-2xl">
+            <span class="eyebrow block mb-4">Comparison</span>
+            <h2 class="t-h2 text-[var(--ink)] mb-5">
+                一般的な英語学習・<br>AIとの違い
+            </h2>
+            <span class="gold-rule block"></span>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-hidden rounded-2xl border border-[#E0DAD2]">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th style="width:20%;">比較項目</th>
+                        <th style="width:26%;text-align:center;">一般的な英語学習</th>
+                        <th style="width:26%;text-align:center;">AI活用</th>
+                        <th class="yw-col" style="width:28%;text-align:center;">YouWorld</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>目的</td>
+                        <td>英語を学ぶ</td>
+                        <td>資料・表現を整える</td>
+                        <td class="yw-col">本番で主導権を握る</td>
+                    </tr>
+                    <tr>
+                        <td>重視する要素</td>
+                        <td>発音・語彙</td>
+                        <td>構成・フレームワーク</td>
+                        <td class="yw-col">圧力下での判断力</td>
+                    </tr>
+                    <tr>
+                        <td>訓練内容</td>
+                        <td>英会話練習</td>
+                        <td>想定問答の作成</td>
+                        <td class="yw-col">崩される体験</td>
+                    </tr>
+                    <tr>
+                        <td>フィードバック</td>
+                        <td>TOEIC・試験対策</td>
+                        <td>テンプレートの最適化</td>
+                        <td class="yw-col">経験者の即時フィードバック</td>
+                    </tr>
+                    <tr>
+                        <td>アプローチ</td>
+                        <td>英語力向上</td>
+                        <td>翻訳・表現の修正</td>
+                        <td class="yw-col">日英の行間の構造的変換</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="md:hidden space-y-4">
+            <div class="card p-5">
+                <p class="t-small font-bold text-[var(--ink)] mb-3">目的 / 訓練内容</p>
+                <div class="space-y-1.5 t-small">
+                    <p class="text-[var(--mid)]">一般：英語力向上・発音</p>
+                    <p class="text-[var(--mid)]">AI：翻訳・表現の最適化</p>
+                    <p class="font-bold" style="color:var(--navy);">YouWorld：圧力下での判断力・本番の主導権</p>
+                </div>
+            </div>
+            <div class="card p-5">
+                <p class="t-small font-bold text-[var(--ink)] mb-3">フィードバック</p>
+                <div class="space-y-1.5 t-small">
+                    <p class="text-[var(--mid)]">一般：TOEIC・試験対策</p>
+                    <p class="text-[var(--mid)]">AI：テンプレートの最適化</p>
+                    <p class="font-bold" style="color:var(--navy);">YouWorld：経験者の即時フィードバック</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-8 t-small text-[var(--light)] max-w-2xl">
+            AIは準備を高度化できる。しかし「本番と同じ圧力」「経験者の即時判断」「日本語の行間を変換する目線」は、両文化を生きた人間との対話からしか得られない。
+        </p>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<section id="contact" class="py-24 md:py-32 bg-mist border-t border-[#E0DAD2]/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+
+            <!-- Left -->
+            <div class="lg:col-span-2">
+                <span class="eyebrow block mb-4">Contact</span>
+                <h2 class="t-h2 text-[var(--ink)] mb-5" style="font-size:clamp(1.625rem,3vw,2.5rem);">
+                    まず「本番で何が起きているか」を一緒に整理します。
+                </h2>
+                <span class="gold-rule block mb-6"></span>
+
+                <div class="t-body text-[var(--mid)] space-y-4 mb-7">
+                    <p>一般的な英会話レッスンは行いません。来週の会議・交渉・面接を、そのまま題材にします。</p>
+                    <p>あなたが今直面している課題を題材に、コーチ陣が「相手側」に立ちながら本番さながらのシミュレーションを行います。</p>
+                </div>
+
+                <ul class="space-y-2.5 mb-7">
+                    <li class="flex items-center gap-2.5 t-small font-semibold text-[var(--ink)]">
+                        <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;"></span>
+                        準備の内容・質の問題なのか
+                    </li>
+                    <li class="flex items-center gap-2.5 t-small font-semibold text-[var(--ink)]">
+                        <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;"></span>
+                        本番で崩されたときの対処の問題なのか
+                    </li>
+                    <li class="flex items-center gap-2.5 t-small font-semibold text-[var(--ink)]">
+                        <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;"></span>
+                        経験者から見て、判断の軸がズレているのか
+                    </li>
+                </ul>
+
+                <p class="t-small text-[var(--light)]">
+                    無理な勧誘は行いません。まずはお話を聞かせてください。
+                </p>
+            </div>
+
+            <!-- Right: Form -->
+            <div class="lg:col-span-3">
+                <p style="font-size:0.875rem;font-weight:700;color:var(--ink);margin-bottom:0.25rem;">無料相談フォーム</p>
+                <p class="t-small text-[var(--mid)] mb-4">以下よりお申し込み内容をご入力ください</p>
+
+                <div class="relative bg-white rounded-2xl border border-[#E0DAD2] overflow-hidden shadow-sm" style="height:900px;">
+                    <div class="absolute inset-0 flex items-center justify-center bg-[#F2EEE8] z-0">
+                        <span class="t-small text-[var(--light)] animate-pulse">フォームを読み込んでいます…</span>
+                    </div>
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSeHYtSer9hRQO39VWE4qdqvHXp4qHEgjom61XseSdqNfS_SSA/viewform?embedded=true"
+                        class="absolute inset-0 w-full h-full z-10 border-0"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<section id="company" class="py-24 md:py-32 bg-white border-t border-[#E0DAD2]/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="mb-14 max-w-2xl">
+            <span class="eyebrow block mb-4">Company</span>
+            <h2 class="t-h2 text-[var(--ink)] mb-5">スクール概要</h2>
+            <span class="gold-rule block"></span>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-10 lg:gap-8 items-start">
+
+            <!-- Left: School overview list -->
+            <div>
+                <h3 class="t-h3 text-[var(--ink)] mb-2" style="font-size:1.5rem;font-weight:900;letter-spacing:-0.02em;">
+                    YouWorld <span style="color:var(--navy);">English</span>
+                </h3>
+                <div class="mt-6 space-y-5">
+                    <div class="flex items-start gap-3.5">
+                        <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l8-4v18M13 21V11l6 4v6M9 9h.01M9 13h.01M9 17h.01"/></svg>
+                        <div>
+                            <p class="t-small font-semibold text-[var(--mid)] mb-0.5">運営会社</p>
+                            <p style="font-size:0.9375rem;font-weight:700;color:var(--ink);">株式会社YouWorld</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3.5">
+                        <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <div>
+                            <p class="t-small font-semibold text-[var(--mid)] mb-0.5">所在地</p>
+                            <p style="font-size:0.9375rem;font-weight:700;color:var(--ink);">東京都目黒区下目黒３－７－５<br>石濃ビル４階</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3.5">
+                        <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <div>
+                            <p class="t-small font-semibold text-[var(--mid)] mb-0.5">設立</p>
+                            <p style="font-size:0.9375rem;font-weight:700;color:var(--ink);">2016年7月12日</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3.5">
+                        <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V6m0 10v2m0-2c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <div>
+                            <p class="t-small font-semibold text-[var(--mid)] mb-0.5">資本金</p>
+                            <p style="font-size:0.9375rem;font-weight:700;color:var(--ink);">100万円</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3.5">
+                        <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        <div>
+                            <p class="t-small font-semibold text-[var(--mid)] mb-0.5">代表者</p>
+                            <p style="font-size:0.9375rem;font-weight:700;color:var(--ink);">代表取締役社長　松樹悠太朗</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle: Hours & Holidays -->
+            <div>
+                <h4 class="t-small font-bold text-[var(--ink)] mb-4" style="letter-spacing:0.02em;">営業時間</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="card p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg style="width:16px;height:16px;color:var(--gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <span class="t-small font-bold text-[var(--ink)]">コーチング対応</span>
+                        </div>
+                        <p style="font-size:1.375rem;font-weight:800;color:var(--navy);letter-spacing:-0.01em;">7:00〜22:00</p>
+                        <p class="t-small text-[var(--light)] mt-1">コーチにより土日祝も稼働</p>
+                    </div>
+                    <div class="card p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg style="width:16px;height:16px;color:var(--gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <span class="t-small font-bold text-[var(--ink)]">本社</span>
+                        </div>
+                        <p style="font-size:1.375rem;font-weight:800;color:var(--navy);letter-spacing:-0.01em;">平日 9:00〜18:00</p>
+                        <p class="t-small text-[var(--light)] mt-1">土日祝休み</p>
+                    </div>
+                </div>
+
+                <h4 class="t-small font-bold text-[var(--ink)] mb-3" style="letter-spacing:0.02em;">定休日</h4>
+                <p class="t-body text-[var(--mid)]">
+                    本社は土日祝がお休みですが、コーチングは年中対応可能です。コーチの稼働状況に応じて柔軟にご予約いただけます。
+                </p>
+            </div>
+
+            <!-- Right: Map -->
+            <div>
+                <h4 class="t-small font-bold text-[var(--ink)] mb-4" style="letter-spacing:0.02em;">アクセス</h4>
+                <div class="rounded-2xl overflow-hidden border border-[#E0DAD2]" style="height:340px;">
+                    <iframe
+                        src="https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E7%9B%AE%E9%BB%92%E5%8C%BA%E4%B8%8B%E7%9B%AE%E9%BB%92%EF%BC%93%EF%BC%8D%EF%BC%97%EF%BC%8D%EF%BC%95%E7%9F%B3%E6%BF%83%E3%83%93%E3%83%AB&output=embed"
+                        class="w-full h-full border-0"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <p class="t-small text-[var(--mid)] mt-3">東京都目黒区下目黒３－７－５石濃ビル４階</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="py-12 border-t border-[#E0DAD2]/60 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2.5">
+                <img src="YouWorlodlogo.png" alt="YouWorld" class="h-6 w-auto opacity-40 grayscale" onerror="this.style.display='none'">
+                <span style="font-size:0.9375rem;font-weight:900;letter-spacing:-0.02em;color:var(--ink);">YouWorld</span>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 t-small font-medium text-[var(--light)]">
+                <a href="#audience"   class="hover:text-[var(--navy)] transition-colors">こんな方へ</a>
+                <a href="#cases"      class="hover:text-[var(--navy)] transition-colors">事例</a>
+                <a href="#value"      class="hover:text-[var(--navy)] transition-colors">なぜ YouWorld</a>
+                <a href="#services"   class="hover:text-[var(--navy)] transition-colors">扱うこと</a>
+                <a href="#comparison" class="hover:text-[var(--navy)] transition-colors">違い</a>
+                <a href="#company"    class="hover:text-[var(--navy)] transition-colors">スクール概要</a>
+            </nav>
+            <p class="t-small text-[var(--light)] font-mono">&copy; 2026 YouWorld. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
