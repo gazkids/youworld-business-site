@@ -5,7 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouWorld | エグゼクティブのための英語コーチング</title>
     <meta name="description" content="英語になると主導権が取れない。それは英語力の問題ではない。AIには崩せない圧力と、日本語の行間を英語に変換する力を、実務家のコーチングで。">
-    
+
+    <link rel="icon" type="image/png" href="YouWorlodlogo.png">
+    <link rel="apple-touch-icon" href="YouWorlodlogo.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PHBSVT43TY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PHBSVT43TY');
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -50,19 +62,19 @@
             letter-spacing: -0.025em;
         }
         .t-h3 {
-            font-size: 1.125rem;
+            font-size: 1.25rem;
             font-weight: 700;
             line-height: 1.4;
             letter-spacing: -0.01em;
         }
         .t-body {
-            font-size: 0.9375rem;
-            line-height: 1.75;
+            font-size: 1.0625rem;
+            line-height: 1.8;
             font-weight: 400;
         }
         .t-small {
-            font-size: 0.8125rem;
-            line-height: 1.6;
+            font-size: 0.9375rem;
+            line-height: 1.65;
         }
 
         /* ── Eyebrow Labels ────────────────────────────── */
@@ -155,7 +167,7 @@
 
         /* ── Navigation ────────────────────────────────── */
         .nav-link {
-            font-size: 0.8125rem;
+            font-size: 0.9375rem;
             font-weight: 500;
             color: var(--mid);
             text-decoration: none;
@@ -205,14 +217,14 @@
         /* ── Comparison table ───────────────────────────── */
         .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; }
         .compare-table th, .compare-table td {
-            padding: 1rem 1.25rem;
+            padding: 1.15rem 1.375rem;
             text-align: left;
             border-bottom: 1px solid var(--border);
-            font-size: 0.875rem;
+            font-size: 0.9375rem;
         }
         .compare-table th {
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 0.8125rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
             color: var(--mid);
@@ -290,6 +302,7 @@
             <a href="#audience"   class="nav-link">こんな方へ</a>
             <a href="#cases"      class="nav-link">事例</a>
             <a href="#value"      class="nav-link">なぜ YouWorld</a>
+            <a href="#coaches"    class="nav-link">コーチ紹介</a>
             <a href="#services"   class="nav-link">扱うこと</a>
             <a href="#comparison" class="nav-link">違い</a>
             <a href="#company"    class="nav-link">スクール概要</a>
@@ -311,6 +324,7 @@
             <a href="#audience"   onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">こんな方へ</a>
             <a href="#cases"      onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">事例</a>
             <a href="#value"      onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">なぜ YouWorld</a>
+            <a href="#coaches"    onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">コーチ紹介</a>
             <a href="#services"   onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">扱うこと</a>
             <a href="#comparison" onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">違い</a>
             <a href="#company"    onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">スクール概要</a>
@@ -328,10 +342,22 @@
 <section id="top" class="relative min-h-screen flex flex-col justify-center pt-16 overflow-hidden bg-paper">
     <div class="hero-ambient"></div>
 
+    <!-- TODO: 7月下旬公開後、hrefを記事URLに差し替えてクリック可能にする -->
+    <div class="absolute top-24 right-6 lg:right-8 z-20 fu" style="max-width:300px;">
+        <div style="border:1px solid var(--border);background:rgba(255,255,255,0.8);backdrop-filter:blur(4px);border-radius:16px;padding:0.75rem 1.125rem;">
+            <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.03em;color:var(--navy);line-height:1.55;white-space:nowrap;">
+                Forbes JAPAN 寄稿予定（7月下旬公開）
+            </p>
+            <p style="font-size:0.8125rem;font-weight:700;letter-spacing:0.01em;color:var(--ink);line-height:1.5;margin-top:0.15rem;">
+                「なぜトランプ氏は交渉に強いのか」
+            </p>
+        </div>
+    </div>
+
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
         <div class="max-w-3xl">
 
-            <span class="eyebrow mb-7 block fu">グローバルエリートのための次世代英語コーチング</span>
+            <span class="eyebrow mb-7 block fu">なぜ、英語になると「言い負かされる」のか</span>
 
             <h1 class="t-display text-[var(--ink)] mb-7 fu fu1">
                 英語になると、<br>
@@ -347,9 +373,9 @@
             </div>
 
             <p class="t-body text-[var(--mid)] max-w-xl mb-10 fu fu2" style="font-size:1.0625rem;line-height:1.8;">
-                AIを使えば資料を整えることも、想定問答を作ることもできる。<br>
-                それでも本番で押し切られる理由は二つある。<br>
-                <strong style="color:var(--ink);">AIには崩せない。そしてAIには、日本語の行間が見えない。</strong>
+                交渉力がないわけじゃない。英語力が足りないわけでもない。<br>
+                それでも言い負かされるのは、「反論できない構成」で話されているからだ。<br>
+                <strong style="color:var(--ink);">AIは、その構成を崩す力を持たない。</strong>
             </p>
 
             <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 fu fu3">
@@ -474,6 +500,11 @@
                 <span class="eyebrow block mb-1.5" style="color:var(--gold);">Why Human Coaching Over AI</span>
                 <p class="t-small text-[var(--mid)]">日本語のビジネスコミュニケーションは「相手が文脈を読んでくれる」前提で成り立っている。しかしヨーロッパのビジネス現場にその前提はない。「すれ違い」の多くはこの構造的な違いから来ていた。AIは翻訳できる。しかし「この伝え方、ヨーロッパ人にはこう聞こえています」という指摘は、両文化を実際に生きた人間でないとできない。</p>
             </div>
+
+            <a href="https://note.com/youworld_grammar/n/nc6cb3c5f98f9" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:1.5rem;font-size:0.9375rem;font-weight:700;color:var(--navy);text-decoration:none;">
+                この事例のインタビュー詳細をnoteで読む
+                <svg style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
         </div>
 
         <!-- Two cases grid -->
@@ -551,8 +582,8 @@
             </p>
         </div>
 
-        <!-- 3 value cards -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+        <!-- 4 value cards -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
 
             <div class="card p-7">
                 <span class="eyebrow block mb-4">AI Can't · 01</span>
@@ -570,7 +601,7 @@
                 </p>
             </div>
 
-            <div class="card p-7 sm:col-span-2 lg:col-span-1">
+            <div class="card p-7">
                 <span class="eyebrow block mb-4">AI Can't · 03</span>
                 <h3 class="t-h3 text-[var(--ink)] mb-3">日本語の行間を<br>英語に変換すること</h3>
                 <p class="t-small text-[var(--mid)] leading-relaxed">
@@ -578,21 +609,29 @@
                 </p>
             </div>
 
-        </div>
-
-        <!-- Coaches -->
-        <div class="border-t border-[#E0DAD2] pt-16">
-            <div class="mb-10">
-                <span class="eyebrow block mb-4">Coach Profiles</span>
-                <h3 class="t-h2 text-[var(--ink)] mb-3" style="font-size:clamp(1.5rem,3vw,2.25rem);">
-                    YouWorldのコーチ陣は、<br>英語教師ではありません。
-                </h3>
-                <p class="t-body text-[var(--mid)] max-w-2xl">
-                    実際に外資系企業での経営・交渉・海外駐在・受験指導など、それぞれの現場を知る実務家です。
+            <div class="card p-7 sm:col-span-2 lg:col-span-1">
+                <span class="eyebrow block mb-4">AI Can't · 04</span>
+                <h3 class="t-h3 text-[var(--ink)] mb-3">反論できない<br>「本論」を組み立てること</h3>
+                <p class="t-small text-[var(--mid)] leading-relaxed">
+                    AIは論点を並べることはできる。しかし、相手が反論しようとした瞬間に言葉に詰まるような「隠れた一貫性」までは設計できない。それは、実際に交渉の場で崩され、鍛えられてきた人間にしか作れない。
                 </p>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        </div>
+
+        <!-- Coaches -->
+        <div id="coaches" class="border-t border-[#E0DAD2] pt-16" style="scroll-margin-top:5rem;">
+            <div class="mb-10">
+                <span class="eyebrow block mb-4">Coach Profiles</span>
+                <h3 class="t-h2 text-[var(--ink)] mb-3" style="font-size:clamp(1.5rem,3vw,2.25rem);">
+                    YouWorldのコーチ陣は、<br>言い負かされてこなかった人たちです。
+                </h3>
+                <p class="t-body text-[var(--mid)] max-w-2xl">
+                    国際交渉、経営、駐在——本物の修羅場で英語を武器にしてきた人たちです。教科書にはない、反論されない構成の作り方を、経験から直接学べます。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- Coach: Sato -->
                 <div class="card overflow-hidden group">
@@ -600,7 +639,7 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Sato講師.png" alt="Sato Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
                     </div>
-                    <div class="p-6">
+                    <div class="p-7">
                         <span class="eyebrow block mb-1">経営コンサル×エグゼクティブ英語</span>
                         <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Sato コーチ</h4>
                         <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込9,900円 / 1回60分</p>
@@ -623,7 +662,7 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Shiota講師.png" alt="Shiota Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
                     </div>
-                    <div class="p-6">
+                    <div class="p-7">
                         <span class="eyebrow block mb-1">海外駐在ビジネス英語</span>
                         <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Shiota コーチ</h4>
                         <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込8,800円 / 1回60分</p>
@@ -646,15 +685,15 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Kuno講師.png" alt="Kuno Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
                     </div>
-                    <div class="p-6">
-                        <span class="eyebrow block mb-1">ビジネス英語×受験英語</span>
+                    <div class="p-7">
+                        <span class="eyebrow block mb-1">海外拠点統括×交渉英語</span>
                         <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Kuno コーチ</h4>
                         <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込7,700円 / 1回60分</p>
-                        <p class="t-small text-[var(--mid)] leading-relaxed">グローバルビジネスから難関大学受験まで対応。スピーキング・リスニングを軸に、英検・IELTSなど資格試験対策にも強みがあります。</p>
+                        <p class="t-small text-[var(--mid)] leading-relaxed">香港・ロンドン・上海など海外拠点を15年率い、現地スタッフとの折衝や営業戦略の実行を英語で担ってきた元ゼネラルマネージャー。パリ・ニューヨークの国際展示会でも結果を出してきた"交渉で通用する英語"を指導します。</p>
                         <div class="flex flex-wrap gap-1.5 mt-4">
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">ビジネス英語</span>
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">大学受験対策</span>
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">英検・IELTS</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">海外拠点統括</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">現地折衝</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">国際展示会実績</span>
                         </div>
                         <a href="https://drive.google.com/file/d/1xjt4EyruENpHQ3vPLDJ0_VGty6mlS8CM/view?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">
                             詳しいプロフィールを見る
@@ -669,15 +708,15 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Kaneko講師.png" alt="Kaneko Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
                     </div>
-                    <div class="p-6">
-                        <span class="eyebrow block mb-1">英会話全般×学習サポート</span>
+                    <div class="p-7">
+                        <span class="eyebrow block mb-1">組織運営×ビジネス英語指導</span>
                         <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Kaneko コーチ</h4>
                         <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込7,700円 / 1回60分</p>
-                        <p class="t-small text-[var(--mid)] leading-relaxed">初心者からシニアまで幅広い年齢層を指導。TOEIC対策に加え、学習モチベーションの維持や長期学習計画の伴走も得意です。</p>
+                        <p class="t-small text-[var(--mid)] leading-relaxed">20年以上ビジネス英語を指導する一方、50名規模の講師陣を束ねる学科長として組織運営にも携わってきた指導者。心理学の知見を活かし、「なぜ伝わらないのか」を構造的に解きほぐします。</p>
                         <div class="flex flex-wrap gap-1.5 mt-4">
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">英会話全般</span>
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">TOEIC対策</span>
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">学習サポート</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">ビジネス英語</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">組織マネジメント</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">心理学ベースの指導</span>
                         </div>
                         <a href="https://drive.google.com/file/d/1KhnkMGmxVLzf7MvX5KVOujxOup3n7nSY/view?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">
                             詳しいプロフィールを見る
@@ -692,15 +731,15 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Iguchi講師.png" alt="Iguchi Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
                     </div>
-                    <div class="p-6">
-                        <span class="eyebrow block mb-1">航空業界英語×海外実務</span>
+                    <div class="p-7">
+                        <span class="eyebrow block mb-1">航空現場×実用英語</span>
                         <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Iguchi コーチ</h4>
                         <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込7,700円 / 1回60分</p>
-                        <p class="t-small text-[var(--mid)] leading-relaxed">"空の現場"で磨いた英語力を指導。旅行英会話や海外マナーに加え、航空業界志望者向けの業界英語・面接対策にも対応します。</p>
+                        <p class="t-small text-[var(--mid)] leading-relaxed">日本航空の国際業務で、誤解が許されない現場の英語を使い続けてきた経験者。実用英検1級と教員免許に裏づけられた丁寧な指導で、社会人の学び直しから航空・旅行業界志望者まで支えます。</p>
                         <div class="flex flex-wrap gap-1.5 mt-4">
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">旅行英会話</span>
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">航空業界対策</span>
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">面接練習</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">航空業界実務</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">実用英語</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">英検1級</span>
                         </div>
                         <a href="https://drive.google.com/file/d/1ZBpO5eghf1FdkdAQal_RG1hSY54HUSg6/view?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">
                             詳しいプロフィールを見る
@@ -709,21 +748,21 @@
                     </div>
                 </div>
 
-                <!-- Coach: Urasaki -->
+                <!-- Coach: Urasaki — 電子署名完了まで非表示。署名後、下記コメントを解除してカードとして復活させる。
                 <div class="card overflow-hidden group">
                     <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Urasaki講師.png" alt="Urasaki Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
                     </div>
-                    <div class="p-6">
-                        <span class="eyebrow block mb-1">受験英語×資格試験対策</span>
+                    <div class="p-7">
+                        <span class="eyebrow block mb-1">国際会議通訳×受験英語</span>
                         <h4 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.25rem;">Urasaki コーチ</h4>
                         <p style="font-size:0.75rem;font-weight:600;color:var(--gold);margin-bottom:0.875rem;">税込7,700円 / 1回60分</p>
-                        <p class="t-small text-[var(--mid)] leading-relaxed">受験から国際会議まで通用する英語力を指導。英検・TOEIC・TOEFL対策や、個別目標に応じた柔軟なカリキュラムが強みです。</p>
+                        <p class="t-small text-[var(--mid)] leading-relaxed">小池百合子元環境大臣や国連会議など、要人通訳として国際交渉の最前線に立ってきたプロフェッショナル。その場で崩されない英語構成力を、受験・資格試験対策にも活かします。</p>
                         <div class="flex flex-wrap gap-1.5 mt-4">
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">受験英語</span>
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">資格試験対策</span>
-                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">4技能総合指導</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">国際会議通訳</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">VIP通訳実績</span>
+                            <span style="font-size:0.6875rem;font-weight:600;padding:3px 8px;border:1px solid var(--border);border-radius:6px;color:var(--mid);">英検・TOEIC・TOEFL対策</span>
                         </div>
                         <a href="https://drive.google.com/file/d/1R4AJ8mgsLxJD-rjzFOUlXM5XsUGEn5_J/view?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">
                             詳しいプロフィールを見る
@@ -731,6 +770,7 @@
                         </a>
                     </div>
                 </div>
+                -->
 
             </div>
 
@@ -765,8 +805,8 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
 
             <!-- Card 1 -->
-            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col justify-between group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300" style="min-height:220px;">
-                <span class="eyebrow mb-5 block">Scene 01 · 会議</span>
+            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300">
+                <span class="eyebrow mb-4 block">Scene 01 · 会議</span>
                 <div>
                     <p style="font-size:0.9375rem;font-weight:500;color:var(--mid);margin-bottom:0.5rem;">「発言する」</p>
                     <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.5rem;">
@@ -778,8 +818,8 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col justify-between group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300" style="min-height:220px;">
-                <span class="eyebrow mb-5 block">Scene 02 · 交渉</span>
+            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300">
+                <span class="eyebrow mb-4 block">Scene 02 · 交渉</span>
                 <div>
                     <p style="font-size:0.9375rem;font-weight:500;color:var(--mid);margin-bottom:0.5rem;">「押し切られない」</p>
                     <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.5rem;">
@@ -791,8 +831,8 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col justify-between group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300 sm:col-span-2 lg:col-span-1" style="min-height:220px;">
-                <span class="eyebrow mb-5 block">Scene 03 · マネジメント</span>
+            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300 sm:col-span-2 lg:col-span-1">
+                <span class="eyebrow mb-4 block">Scene 03 · マネジメント</span>
                 <div>
                     <p style="font-size:0.9375rem;font-weight:500;color:var(--mid);margin-bottom:0.5rem;">「伝える」</p>
                     <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.5rem;">
@@ -808,8 +848,8 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
             <!-- Card 4 -->
-            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col justify-between group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300" style="min-height:220px;">
-                <span class="eyebrow mb-5 block">Scene 04 · プレゼン</span>
+            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300">
+                <span class="eyebrow mb-4 block">Scene 04 · プレゼン</span>
                 <div>
                     <p style="font-size:0.9375rem;font-weight:500;color:var(--mid);margin-bottom:0.5rem;">「説明する」</p>
                     <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.5rem;">
@@ -821,8 +861,8 @@
             </div>
 
             <!-- Card 5 -->
-            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col justify-between group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300" style="min-height:220px;">
-                <span class="eyebrow mb-5 block">Scene 05 · キャリア・面接</span>
+            <div class="bg-white rounded-2xl border border-[#E0DAD2] p-7 flex flex-col group hover:border-[#C4A26A]/40 hover:shadow-lg transition-all duration-300">
+                <span class="eyebrow mb-4 block">Scene 05 · キャリア・面接</span>
                 <div>
                     <p style="font-size:0.9375rem;font-weight:500;color:var(--mid);margin-bottom:0.5rem;">「想定問答を作る」</p>
                     <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.5rem;">
@@ -1106,6 +1146,7 @@
                 <a href="#audience"   class="hover:text-[var(--navy)] transition-colors">こんな方へ</a>
                 <a href="#cases"      class="hover:text-[var(--navy)] transition-colors">事例</a>
                 <a href="#value"      class="hover:text-[var(--navy)] transition-colors">なぜ YouWorld</a>
+                <a href="#coaches"    class="hover:text-[var(--navy)] transition-colors">コーチ紹介</a>
                 <a href="#services"   class="hover:text-[var(--navy)] transition-colors">扱うこと</a>
                 <a href="#comparison" class="hover:text-[var(--navy)] transition-colors">違い</a>
                 <a href="#company"    class="hover:text-[var(--navy)] transition-colors">スクール概要</a>
