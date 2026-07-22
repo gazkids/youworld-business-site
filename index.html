@@ -216,6 +216,30 @@
 
         /* ── Comparison table ───────────────────────────── */
         .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+        /* ── AI Coach Finder chat bubbles ────────────────── */
+        .ai-chat-bubble {
+            max-width: 85%;
+            padding: 0.75rem 1.05rem;
+            border-radius: 14px;
+            font-size: 0.9375rem;
+            line-height: 1.65;
+            margin-bottom: 0.75rem;
+            white-space: pre-wrap;
+        }
+        .ai-chat-bubble--bot {
+            background: #fff;
+            border: 1px solid var(--border);
+            color: var(--ink);
+            margin-right: auto;
+            border-bottom-left-radius: 4px;
+        }
+        .ai-chat-bubble--user {
+            background: var(--navy);
+            color: #fff;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+
         .compare-table th, .compare-table td {
             padding: 1.15rem 1.375rem;
             text-align: left;
@@ -631,10 +655,36 @@
                 </p>
             </div>
 
+            <!-- AI Coach Finder (Chat) -->
+            <div id="ai-coach-finder" class="mb-12" style="background:linear-gradient(135deg,#F7F3EC,#FDFBF7);border:1px solid var(--border);border-radius:20px;padding:2rem;">
+                <span class="eyebrow block mb-2" style="color:var(--gold);">AI コーチ診断</span>
+                <h4 style="font-size:1.15rem;font-weight:800;color:var(--ink);margin-bottom:0.5rem;">あなたの目的に、一番合うコーチは？</h4>
+                <p class="t-small text-[var(--mid)] mb-5">AIとの簡単な対話で、状況をお聞きしながら最適なコーチをご提案します。</p>
+
+                <div id="ai-chat-window" style="max-height:420px;overflow-y:auto;padding:0.25rem 0.25rem 0.5rem;">
+                    <div class="ai-chat-bubble ai-chat-bubble--bot">
+                        こんにちは。今の状況や、英語コーチングで達成したいことを教えてください。いくつか質問させていただいた上で、最適なコーチをご提案します。
+                    </div>
+                </div>
+
+                <div id="ai-coach-error" class="t-small" style="display:none;color:#B3261E;margin-top:0.5rem;"></div>
+
+                <div id="ai-coach-loading" style="display:none;margin:0.75rem 0;">
+                    <div class="ai-chat-bubble ai-chat-bubble--bot" style="color:var(--mid);">入力中…</div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 mt-4">
+                    <textarea id="ai-coach-input" rows="2" maxlength="1000" placeholder="例：来月から海外拠点のマネージャーと英語で交渉する機会が増える。" style="flex:1;resize:vertical;border:1px solid var(--border);border-radius:12px;padding:0.875rem 1rem;font-size:0.9375rem;font-family:inherit;color:var(--ink);background:#fff;"></textarea>
+                    <button id="ai-coach-submit" type="button" style="white-space:nowrap;background:var(--navy);color:#fff;font-weight:700;font-size:0.9375rem;padding:0.875rem 1.5rem;border-radius:12px;border:none;cursor:pointer;align-self:flex-start;">
+                        送信
+                    </button>
+                </div>
+            </div>
+
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- Coach: Sato -->
-                <div class="card overflow-hidden group">
+                <div class="card overflow-hidden group" id="coach-sato" style="scroll-margin-top:5rem;">
                     <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Sato講師.png" alt="Sato Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
@@ -657,7 +707,7 @@
                 </div>
 
                 <!-- Coach: Shiota -->
-                <div class="card overflow-hidden group">
+                <div class="card overflow-hidden group" id="coach-shiota" style="scroll-margin-top:5rem;">
                     <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Shiota講師.png" alt="Shiota Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
@@ -680,7 +730,7 @@
                 </div>
 
                 <!-- Coach: Kuno -->
-                <div class="card overflow-hidden group">
+                <div class="card overflow-hidden group" id="coach-kuno" style="scroll-margin-top:5rem;">
                     <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Kuno講師.png" alt="Kuno Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
@@ -703,7 +753,7 @@
                 </div>
 
                 <!-- Coach: Kaneko -->
-                <div class="card overflow-hidden group">
+                <div class="card overflow-hidden group" id="coach-kaneko" style="scroll-margin-top:5rem;">
                     <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Kaneko講師.png" alt="Kaneko Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
@@ -726,7 +776,7 @@
                 </div>
 
                 <!-- Coach: Iguchi -->
-                <div class="card overflow-hidden group">
+                <div class="card overflow-hidden group" id="coach-iguchi" style="scroll-margin-top:5rem;">
                     <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Iguchi講師.png" alt="Iguchi Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
@@ -749,7 +799,7 @@
                 </div>
 
                 <!-- Coach: Urasaki -->
-                <div class="card overflow-hidden group">
+                <div class="card overflow-hidden group" id="coach-urasaki" style="scroll-margin-top:5rem;">
                     <div class="relative isolate aspect-[5/6] overflow-hidden photo-placeholder">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img src="Urasaki講師.png" alt="Urasaki Coach" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'">
@@ -1154,6 +1204,180 @@
         </div>
     </div>
 </footer>
+
+<script>
+(function () {
+    var COACH_META = {
+        sato:    { name: "Sato コーチ",    img: "Sato講師.png",    specialty: "経営コンサル×エグゼクティブ英語" },
+        shiota:  { name: "Shiota コーチ",  img: "Shiota講師.png",  specialty: "海外駐在ビジネス英語" },
+        kuno:    { name: "Kuno コーチ",    img: "Kuno講師.png",    specialty: "海外拠点統括×交渉英語" },
+        kaneko:  { name: "Kaneko コーチ",  img: "Kaneko講師.png",  specialty: "組織運営×ビジネス英語指導" },
+        iguchi:  { name: "Iguchi コーチ",  img: "Iguchi講師.png",  specialty: "航空現場×実用英語" },
+        urasaki: { name: "Urasaki コーチ", img: "Urasaki講師.png", specialty: "国際会議通訳×受験英語" }
+    };
+
+    var FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeHYtSer9hRQO39VWE4qdqvHXp4qHEgjom61XseSdqNfS_SSA/viewform";
+    var FORM_ENTRY_ID = "entry.181834441";
+
+    var chatWindow = document.getElementById("ai-chat-window");
+    var input      = document.getElementById("ai-coach-input");
+    var button     = document.getElementById("ai-coach-submit");
+    var errorBox   = document.getElementById("ai-coach-error");
+    var loading    = document.getElementById("ai-coach-loading");
+
+    if (!button) return;
+
+    var conversation = [];   // { role: "user"|"assistant", content: string } — sent to the API
+    var userTurns = 0;
+    var lastUserMessage = "";
+    var sessionId = generateSessionId();
+
+    function send() {
+        var message = (input.value || "").trim();
+        if (!message) return;
+
+        errorBox.style.display = "none";
+        addBubble("user", message);
+        conversation.push({ role: "user", content: message });
+        lastUserMessage = message;
+        userTurns++;
+        input.value = "";
+
+        setBusy(true);
+
+        fetch("/api/recommend-coach", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ messages: conversation, sessionId: sessionId })
+        })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (result) {
+            setBusy(false);
+
+            if (!result.ok || result.data.error) {
+                errorBox.textContent = (result.data && result.data.error) || "エラーが発生しました。時間をおいて再度お試しください。";
+                errorBox.style.display = "block";
+                return;
+            }
+
+            if (result.data.type === "question") {
+                addBubble("bot", result.data.message || "");
+                conversation.push({ role: "assistant", content: result.data.message || "" });
+            } else if (result.data.type === "recommendation") {
+                renderRecommendation(result.data.message || "", result.data.recommendations || []);
+                conversation.push({ role: "assistant", content: result.data.message || "" });
+            }
+        })
+        .catch(function () {
+            setBusy(false);
+            errorBox.textContent = "通信エラーが発生しました。時間をおいて再度お試しください。";
+            errorBox.style.display = "block";
+        });
+    }
+
+    button.addEventListener("click", send);
+    input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            send();
+        }
+    });
+
+    function setBusy(isBusy) {
+        button.disabled = isBusy;
+        input.disabled = isBusy;
+        button.style.opacity = isBusy ? "0.6" : "1";
+        loading.style.display = isBusy ? "block" : "none";
+        if (isBusy) scrollToBottom();
+    }
+
+    function addBubble(role, text) {
+        var div = document.createElement("div");
+        div.className = "ai-chat-bubble " + (role === "user" ? "ai-chat-bubble--user" : "ai-chat-bubble--bot");
+        div.textContent = text;
+        chatWindow.appendChild(div);
+        scrollToBottom();
+    }
+
+    function renderRecommendation(introMessage, recommendations) {
+        if (introMessage) addBubble("bot", introMessage);
+
+        if (!recommendations.length) {
+            errorBox.textContent = "該当するコーチを見つけられませんでした。";
+            errorBox.style.display = "block";
+            return;
+        }
+
+        var card = document.createElement("div");
+        card.style.marginBottom = "0.75rem";
+
+        var html = "";
+        recommendations.forEach(function (rec) {
+            var meta = COACH_META[rec.coach.id];
+            if (!meta) return;
+
+            html +=
+                '<div style="display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:0.875rem;">' +
+                    '<div style="flex-shrink:0;width:56px;height:56px;border-radius:50%;overflow:hidden;background:var(--border);">' +
+                        '<img src="' + meta.img + '" alt="' + meta.name + '" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">' +
+                    '</div>' +
+                    '<div style="flex:1;">' +
+                        '<p style="font-size:0.8125rem;font-weight:600;color:var(--gold);margin-bottom:0.125rem;">' + escapeHtml(meta.specialty) + '</p>' +
+                        '<h5 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.375rem;">' + escapeHtml(meta.name) + '</h5>' +
+                        '<p class="t-small text-[var(--mid)]" style="margin-bottom:0.75rem;">' + escapeHtml(rec.reason) + '</p>' +
+                        '<a href="#coach-' + rec.coach.id + '" style="font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">プロフィールを見る →</a>' +
+                    '</div>' +
+                '</div>';
+        });
+
+        var formUrl = buildFormUrl(recommendations);
+        html +=
+            '<a href="' + formUrl + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.25rem;background:var(--navy);color:#fff;font-weight:700;font-size:0.9375rem;padding:0.75rem 1.375rem;border-radius:10px;text-decoration:none;">' +
+                'お問い合わせフォームを開く（内容自動入力）' +
+            '</a>';
+
+        card.innerHTML = html;
+        chatWindow.appendChild(card);
+        scrollToBottom();
+    }
+
+    function buildFormUrl(recommendations) {
+        var lines = ["【AIコーチ診断結果】", "ご相談内容：" + truncate(lastUserMessage, 200)];
+
+        recommendations.forEach(function (rec) {
+            var meta = COACH_META[rec.coach.id];
+            if (!meta) return;
+            lines.push("おすすめコーチ：" + meta.name + "（" + meta.specialty + "）");
+            lines.push("提案理由：" + truncate(rec.reason, 200));
+        });
+
+        var summary = lines.join("\n");
+        return FORM_BASE_URL + "?usp=pp_url&" + FORM_ENTRY_ID + "=" + encodeURIComponent(summary);
+    }
+
+    function generateSessionId() {
+        if (window.crypto && typeof window.crypto.randomUUID === "function") {
+            return window.crypto.randomUUID();
+        }
+        return "sess-" + Date.now() + "-" + Math.random().toString(36).slice(2, 10);
+    }
+
+    function truncate(str, maxLen) {
+        str = str || "";
+        return str.length > maxLen ? str.slice(0, maxLen) + "…" : str;
+    }
+
+    function scrollToBottom() {
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    function escapeHtml(str) {
+        var div = document.createElement("div");
+        div.textContent = str || "";
+        return div.innerHTML;
+    }
+})();
+</script>
 
 </body>
 </html>
