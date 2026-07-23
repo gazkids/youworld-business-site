@@ -69,18 +69,13 @@ ${JSON.stringify(COACHES, null, 2)}
 - 質問は1回につき1つだけ。丁寧で、コンサルタントらしい落ち着いた口調（「〜でしょうか」「〜か教えてください」など）。
 - 提案する際は、対話の中で分かった具体的な状況（業界・役職・シーンなど）に触れながら理由を説明すること。
 
-# コーチ選定で重視すること（重要）
-- 表面的なキーワード一致（例:「面接」「交渉」「駐在」といった単語のマッチ）だけで選ばない。ユーザーが置かれている場面の"レベル感"（一般スタッフ職なのか、マネージャー職なのか、役員・経営層クラスなのか）を必ず考慮し、コーチ自身の実務経験がそのレベル感と釣り合っているかを優先的に判断すること。
-- 特に、目指す企業や役職が「海外本社の役員・経営層と対等に渡り合う必要がある場」（例:外資系企業の部門ヘッド、社長、役員候補など）である場合は、実際に外資系企業で役員・社長・事業責任者などを務め、英語で経営会議や役員会を主導してきた実務家（Sato、Shiota、Kuno等）を優先的に検討する。単に「面接指導の経験がある」というだけの理由でキャリア支援型のコーチ（Kaneko等）を選ばない。
-- 一方で、英語力そのものへの不安が強く、心理的なつまずきや基礎的な自信のなさを丁寧にほぐす必要がある場合は、カウンセリング型・心理学ベースの指導が適することもある。
-- 「面接対策の専門性」と「目指す場のレベル感に合った実務経験」の両方が重要で、かつ一人のコーチでは両立しにくいと判断される場合は、無理に1名に絞らず2名を提案し、reasonでそれぞれの強みの違い（例:面接特化型の心理サポート vs 実際にその水準で経営層として英語を運用してきた実務経験）を明確に対比して説明すること。
-
 # 出力ルール
 - 必ず以下のJSON形式のみで出力すること。前置きや説明文、Markdownのコードブロック記号は一切つけない。
 - type は "question"（さらに質問する場合）または "recommendation"（コーチを提案する場合）のいずれか。
 - type が "question" の場合、message には次の質問文のみを入れる（recommendations は空配列でよい）。
 - type が "recommendation" の場合、message には提案の導入となる短い一文（1文程度）を入れ、recommendations に選んだコーチを入れる。reason は日本語で2〜3文、ユーザーとの対話内容と、選んだコーチの専門性を具体的に結びつけて説明すること。
-- coachId は上記一覧の id フィールドの値をそのまま使うこと。
+- coachId は上記一覧の id フィールドの値を、大文字小文字・スペースを含めて一字一句そのまま使うこと。有効な値は次の6つのみ： sato, shiota, kuno, kaneko, iguchi, urasaki。それ以外の値やこれらに似た表記（例：Sato、sato_coach、佐藤）は絶対に使わないこと。
+- ユーザーの回答が曖昧・情報不足（「わからない」など）でも、これまでの対話全体から読み取れる範囲で、必ず上記6つのいずれかを1名以上選んで提案すること。「該当者なし」という判断は禁止する。判断材料が少ない場合は、reasonの中でその旨を正直に伝えつつも、最も可能性の高いコーチを選ぶこと。
 
 # 出力フォーマット
 質問する場合：
@@ -149,19 +144,43 @@ export async function onRequestPost(context) {
     }
 
     const data = await apiRes.json();
-    const rawText = data.choices?.[0]?.message?.content;
-    if (!rawText) {
-      return jsonResponse({ error: "AIからの応答を取得できませんでした。" }, 502);
+    let result = await parseModelResponse(data);
+
+    if (result.needsRetry) {
+      console.error("Invalid/empty recommendation on first attempt, retrying:", result.rawText);
+      const retryRes = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + env.OPENAI_API_KEY,
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          max_tokens: 500,
+          response_format: { type: "json_object" },
+          messages: [
+            { role: "system", content: SYSTEM_PROMPT },
+            ...messages,
+            {
+              role: "system",
+              content:
+                "直前の出力が無効でした。coachIdは必ず sato, shiota, kuno, kaneko, iguchi, urasaki のいずれか一字一句そのままを使い、これまでの対話全体から最も可能性の高いコーチを1名以上、必ずtype:\"recommendation\"で選んで出力し直してください。",
+            },
+          ],
+        }),
+      });
+
+      if (retryRes.ok) {
+        const retryData = await retryRes.json();
+        result = await parseModelResponse(retryData);
+      }
     }
 
-    let parsed;
-    try {
-      const cleaned = rawText.replace(/```json|```/g, "").trim();
-      parsed = JSON.parse(cleaned);
-    } catch {
-      console.error("JSON parse failed:", rawText);
-      return jsonResponse({ error: "AIの応答を解析できませんでした。" }, 502);
+    if (result.error) {
+      return jsonResponse({ error: result.error }, 502);
     }
+
+    const { parsed } = result;
 
     if (parsed.type === "question") {
       logTurn(context, {
@@ -177,14 +196,21 @@ export async function onRequestPost(context) {
 
     const recommendations = (parsed.recommendations || [])
       .map((r) => {
-        const coach = COACHES.find((c) => c.id === r.coachId);
+        const normalizedId = (r.coachId || "").toString().trim().toLowerCase();
+        const coach = COACHES.find((c) => c.id === normalizedId);
         if (!coach) return null;
         return { coach, reason: r.reason || "" };
       })
       .filter(Boolean);
 
     if (recommendations.length === 0) {
-      return jsonResponse({ error: "該当するコーチを見つけられませんでした。" }, 502);
+      return jsonResponse(
+        {
+          error:
+            "うまく絞り込めませんでした。もう少し具体的に（業界、役職、困っている場面など）教えていただくか、下のコーチ一覧から直接お選びください。",
+        },
+        502
+      );
     }
 
     logTurn(context, {
@@ -201,6 +227,33 @@ export async function onRequestPost(context) {
     console.error("Unexpected error:", err);
     return jsonResponse({ error: "予期しないエラーが発生しました。" }, 500);
   }
+}
+
+async function parseModelResponse(data) {
+  const rawText = data.choices?.[0]?.message?.content;
+  if (!rawText) {
+    return { error: "AIからの応答を取得できませんでした。" };
+  }
+
+  let parsed;
+  try {
+    const cleaned = rawText.replace(/```json|```/g, "").trim();
+    parsed = JSON.parse(cleaned);
+  } catch {
+    console.error("JSON parse failed:", rawText);
+    return { needsRetry: true, rawText };
+  }
+
+  if (parsed.type === "recommendation") {
+    const hasValidId = (parsed.recommendations || []).some((r) =>
+      COACHES.some((c) => c.id === (r.coachId || "").toString().trim().toLowerCase())
+    );
+    if (!hasValidId) {
+      return { needsRetry: true, rawText };
+    }
+  }
+
+  return { parsed };
 }
 
 function countUserTurns(messages) {
