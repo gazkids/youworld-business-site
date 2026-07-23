@@ -86,6 +86,29 @@
             color: var(--gold);
             font-family: 'Inter', monospace;
         }
+        .eyebrow-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(196,162,106,0.13);
+            border: 1px solid rgba(196,162,106,0.4);
+            color: var(--navy);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-family: 'Inter', monospace;
+        }
+        .eyebrow-pill::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            flex-shrink: 0;
+        }
 
         /* ── Signature: Gold Rule ──────────────────────── */
         .gold-rule {
@@ -186,19 +209,24 @@
         .audience-item {
             display: flex;
             align-items: flex-start;
-            gap: 1.25rem;
-            padding: 1.25rem 0;
+            gap: 1.5rem;
+            padding: 1.5rem 0.5rem;
             border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+        .audience-item:hover {
+            background: rgba(196,162,106,0.05);
         }
         .audience-num {
             font-family: 'Inter', monospace;
-            font-size: 0.6875rem;
-            font-weight: 700;
+            font-size: 1.625rem;
+            font-weight: 800;
             color: var(--gold);
-            letter-spacing: 0.05em;
-            margin-top: 3px;
+            letter-spacing: -0.02em;
+            margin-top: -2px;
             flex-shrink: 0;
-            width: 1.5rem;
+            width: 2.75rem;
+            opacity: 0.85;
         }
 
         /* ── Service rows ───────────────────────────────── */
@@ -327,7 +355,7 @@
             <a href="#cases"      class="nav-link">事例</a>
             <a href="#value"      class="nav-link">なぜ YouWorld</a>
             <a href="#coaches"    class="nav-link">コーチ紹介</a>
-            <a href="#services"   class="nav-link">扱うこと</a>
+            <a href="#services"   class="nav-link">得られる変化</a>
             <a href="#comparison" class="nav-link">違い</a>
             <a href="#company"    class="nav-link">スクール概要</a>
         </nav>
@@ -349,7 +377,7 @@
             <a href="#cases"      onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">事例</a>
             <a href="#value"      onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">なぜ YouWorld</a>
             <a href="#coaches"    onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">コーチ紹介</a>
-            <a href="#services"   onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">扱うこと</a>
+            <a href="#services"   onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">得られる変化</a>
             <a href="#comparison" onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">違い</a>
             <a href="#company"    onclick="document.getElementById('mob').classList.add('hidden')" class="px-3 py-2.5 text-sm font-medium text-[#71717A] rounded-xl hover:bg-[#F2EEE8] transition-colors">スクール概要</a>
             <a href="#contact"    onclick="document.getElementById('mob').classList.add('hidden')" class="mt-2 btn-primary text-center justify-center">無料相談を申し込む</a>
@@ -403,8 +431,8 @@
             </p>
 
             <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 fu fu3">
-                <a href="#contact" class="btn-primary">
-                    詰まりポイントを無料で可視化する
+                <a href="#ai-coach-finder" class="btn-primary">
+                    まずはChatGPTに相談してみる
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
                 <a href="#cases" class="btn-ghost">
@@ -433,9 +461,9 @@
 
             <!-- Left: heading sticky -->
             <div class="lg:col-span-4 lg:sticky lg:top-28">
-                <span class="eyebrow block mb-5">こんな方へ</span>
-                <h2 class="t-h2 text-[var(--ink)] mb-5">
-                    準備は<br>十分。<br>
+                <span class="eyebrow-pill mb-5" style="display:inline-flex;">こんな方へ</span>
+                <h2 class="t-h2 text-[var(--ink)] mb-5 mt-4">
+                    準備は<br><span class="key-word">十分。</span>
                 </h2>
                 <span class="gold-rule mb-5 block"></span>
                 <p class="t-body text-[var(--mid)]">
@@ -491,7 +519,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
         <div class="mb-14">
-            <span class="eyebrow block mb-4">Case Studies</span>
+            <span class="eyebrow-pill mb-4" style="display:inline-flex;">事例</span>
             <h2 class="t-h2 text-[var(--ink)] mb-4 max-w-2xl">
                 変わったのは、<br>英語ではなく「立ち位置」。
             </h2>
@@ -596,9 +624,9 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
         <div class="mb-16 max-w-2xl">
-            <span class="eyebrow block mb-4">なぜ YouWorld</span>
-            <h2 class="t-h2 text-[var(--ink)] mb-5">
-                AIは、あなたを<br>崩せない。
+            <span class="eyebrow-pill mb-4" style="display:inline-flex;">なぜ YouWorld</span>
+            <h2 class="t-h2 text-[var(--ink)] mb-5 mt-4">
+                AIは、あなたを<br><span class="key-word">崩せない。</span>
             </h2>
             <span class="gold-rule block mb-5"></span>
             <p class="t-body text-[var(--mid)]">
@@ -646,7 +674,7 @@
         <!-- Coaches -->
         <div id="coaches" class="border-t border-[#E0DAD2] pt-16" style="scroll-margin-top:5rem;">
             <div class="mb-14">
-                <span class="eyebrow block mb-4">Coach Profiles</span>
+                <span class="eyebrow-pill mb-4" style="display:inline-flex;">コーチ紹介</span>
                 <h3 class="t-h2 text-[var(--ink)] mb-3" style="font-size:clamp(1.5rem,3vw,2.25rem);">
                     YouWorldのコーチ陣は、<br>言い負かされてこなかった人たちです。
                 </h3>
@@ -656,7 +684,7 @@
             </div>
 
             <!-- AI Coach Finder (Chat) -->
-            <div id="ai-coach-finder" class="mb-16" style="background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 12px 32px rgba(15,32,86,0.12);">
+            <div id="ai-coach-finder" class="mb-16" style="background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 12px 32px rgba(15,32,86,0.12);scroll-margin-top:5rem;">
 
                 <!-- Header strip: makes this read as a distinct interactive tool, not a text card -->
                 <div style="background:var(--navy);padding:1rem 1.75rem;display:flex;align-items:center;gap:0.6rem;">
@@ -850,7 +878,7 @@
         <!-- Header -->
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div>
-                <span class="eyebrow block mb-4">What We Handle</span>
+                <span class="eyebrow-pill mb-4" style="display:inline-flex;">得られる変化</span>
                 <h2 class="t-h2 text-[var(--ink)]">
                     「準備する」から<br>「本番で動ける」へ。
                 </h2>
@@ -944,7 +972,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
         <div class="mb-14 max-w-2xl">
-            <span class="eyebrow block mb-4">Comparison</span>
+            <span class="eyebrow-pill mb-4" style="display:inline-flex;">違い</span>
             <h2 class="t-h2 text-[var(--ink)] mb-5">
                 一般的な英語学習・<br>AIとの違い
             </h2>
@@ -1033,7 +1061,7 @@
 
             <!-- Left -->
             <div class="lg:col-span-2">
-                <span class="eyebrow block mb-4">Contact</span>
+                <span class="eyebrow-pill mb-4" style="display:inline-flex;">無料相談</span>
                 <h2 class="t-h2 text-[var(--ink)] mb-5" style="font-size:clamp(1.625rem,3vw,2.5rem);">
                     まず「本番で何が起きているか」を一緒に整理します。
                 </h2>
@@ -1091,7 +1119,7 @@
 <section id="company" class="py-24 md:py-32 bg-white border-t border-[#E0DAD2]/60">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="mb-14 max-w-2xl">
-            <span class="eyebrow block mb-4">Company</span>
+            <span class="eyebrow-pill mb-4" style="display:inline-flex;">スクール概要</span>
             <h2 class="t-h2 text-[var(--ink)] mb-5">スクール概要</h2>
             <span class="gold-rule block"></span>
         </div>
@@ -1206,7 +1234,7 @@
                 <a href="#cases"      class="hover:text-[var(--navy)] transition-colors">事例</a>
                 <a href="#value"      class="hover:text-[var(--navy)] transition-colors">なぜ YouWorld</a>
                 <a href="#coaches"    class="hover:text-[var(--navy)] transition-colors">コーチ紹介</a>
-                <a href="#services"   class="hover:text-[var(--navy)] transition-colors">扱うこと</a>
+                <a href="#services"   class="hover:text-[var(--navy)] transition-colors">得られる変化</a>
                 <a href="#comparison" class="hover:text-[var(--navy)] transition-colors">違い</a>
                 <a href="#company"    class="hover:text-[var(--navy)] transition-colors">スクール概要</a>
             </nav>
