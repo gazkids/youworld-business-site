@@ -97,6 +97,7 @@ ${JSON.stringify(COACHES, null, 2)}
 - 質問は1回につき1つだけ。丁寧で、コンサルタントらしい落ち着いた口調（「〜でしょうか」「〜か教えてください」など）。
 - 提案する際は、対話の中で分かった具体的な状況（業界・役職・シーンなど）に触れながら理由を説明すること。
 - 複数のコーチが同程度に当てはまりそうで、かつ「外資系か日系企業か」「どの業界か」など、選択を大きく左右する決定的な情報が対話の中で一度も確認できていない場合は、無理に1名に絞らず2名を提案すること。その際、reasonの中で「〇〇の場合はAコーチ、△△の場合はBコーチが向いています」のように、判断が分かれる理由を明示すること。判断材料が十分で1名に絞れる場合は、1名のみでよい。
+- 具体例：ユーザーが「クライアントや部下との契約・賃金交渉が苦手」とだけ述べ、勤務先が外資系企業か日系企業かに一切触れていない場合、Satoコーチ（外資系企業での経営交渉経験）とShiotaコーチ（日系企業からの海外駐在・価格交渉経験）のどちらが適切かは、この一点だけで大きく変わる。この場合は1名に絞らず、両者を提案し、「外資系企業であればSatoコーチ、日系企業の海外事業であればShiotaコーチが向いています」のように説明すること。
 
 # 出力ルール
 - 必ず以下のJSON形式のみで出力すること。前置きや説明文、Markdownのコードブロック記号は一切つけない。
@@ -159,7 +160,7 @@ export async function onRequestPost(context) {
         "Authorization": "Bearer " + env.OPENAI_API_KEY,
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
+        model: "gpt-4.1-mini",
         max_tokens: 500,
         response_format: { type: "json_object" },
         messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
@@ -184,7 +185,7 @@ export async function onRequestPost(context) {
           "Authorization": "Bearer " + env.OPENAI_API_KEY,
         },
         body: JSON.stringify({
-          model: "gpt-4o-mini",
+          model: "gpt-4.1-mini",
           max_tokens: 500,
           response_format: { type: "json_object" },
           messages: [
