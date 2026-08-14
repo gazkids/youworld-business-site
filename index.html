@@ -394,17 +394,17 @@
 <section id="top" class="relative min-h-screen flex flex-col justify-center pt-16 overflow-hidden bg-paper">
     <div class="hero-ambient"></div>
 
-    <!-- TODO: 7月下旬公開後、hrefを記事URLに差し替えてクリック可能にする -->
-    <div class="absolute top-24 right-6 lg:right-8 z-20 fu" style="max-width:300px;">
-        <div style="border:1px solid var(--border);background:rgba(255,255,255,0.8);backdrop-filter:blur(4px);border-radius:16px;padding:0.75rem 1.125rem;">
-            <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.03em;color:var(--navy);line-height:1.55;white-space:nowrap;">
-                Forbes JAPAN 寄稿予定（7月下旬公開）
+    <a href="https://forbesjapan.com/articles/detail/97096" target="_blank" rel="noopener" class="absolute top-24 right-6 lg:right-8 z-20 fu" style="max-width:320px;display:block;text-decoration:none;">
+        <div style="border:1px solid var(--border);background:rgba(255,255,255,0.85);backdrop-filter:blur(4px);border-radius:16px;padding:0.75rem 1.125rem;transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.boxShadow='0 8px 20px rgba(15,32,86,0.10)';" onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none';">
+            <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.03em;color:var(--navy);line-height:1.55;">
+                Forbes JAPAN 寄稿
             </p>
             <p style="font-size:0.8125rem;font-weight:700;letter-spacing:0.01em;color:var(--ink);line-height:1.5;margin-top:0.15rem;">
-                「なぜトランプ氏は交渉に強いのか」
+                「トランプ発言構成にも学ぶ、<br>なぜ英語話者には『言い負かされやすい』か」
             </p>
+            <p style="font-size:0.6875rem;font-weight:600;color:var(--gold);margin-top:0.35rem;">記事を読む →</p>
         </div>
-    </div>
+    </a>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
         <div class="max-w-3xl">
@@ -1165,6 +1165,15 @@
                         <div>
                             <p class="t-small font-semibold text-[var(--mid)] mb-0.5">代表者</p>
                             <p style="font-size:0.9375rem;font-weight:700;color:var(--ink);">代表取締役社長　松樹悠太朗</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3.5">
+                        <svg style="width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <div>
+                            <p class="t-small font-semibold text-[var(--mid)] mb-0.5">その他の事業</p>
+                            <p style="font-size:0.9375rem;font-weight:700;">
+                                <a href="https://ai.youworldenglish.com" target="_blank" rel="noopener" style="color:var(--navy);text-decoration:underline;text-underline-offset:2px;">YouWorld AI（AIスクール）</a>
+                            </p>
                         </div>
                     </div>
                 </div>
