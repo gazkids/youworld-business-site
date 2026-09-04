@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://youworldenglish.com/sitemap.xml
+Sitemap: https://www.youworldenglish.com/sitemap.xml

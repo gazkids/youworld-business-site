@@ -9,7 +9,7 @@ const root = path.resolve(__dirname, '..');
 const contentDir = path.join(root, 'src/blog/content');
 const distDir = path.join(root, 'dist');
 
-const SITE_URL = 'https://youworldenglish.com';
+const SITE_URL = 'https://www.youworldenglish.com';
 
 function parseFrontmatterSlugAndDate(raw) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
