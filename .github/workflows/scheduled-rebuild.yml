@@ -1,0 +1,20 @@
+name: Scheduled rebuild (for scheduled blog posts)
+
+# Fires the Cloudflare Pages Deploy Hook every morning so that any blog
+# post whose frontmatter date has arrived goes live automatically.
+# Posts are already hidden/shown client-side by date (see
+# src/blog/BlogLoader.js), so this workflow exists mainly to refresh
+# sitemap.xml once a scheduled post's date arrives.
+
+on:
+  schedule:
+    - cron: '0 22 * * *' # 07:00 JST
+  workflow_dispatch: {} # allows manual triggering from the Actions tab
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages deploy hook
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/5f3fa998-cc68-49d4-8417-81a683b2b487"

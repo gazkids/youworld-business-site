@@ -33,6 +33,8 @@ for (const file of files) {
   const raw = readFileSync(path.join(contentDir, file), 'utf-8');
   const fm = parseFrontmatterSlugAndDate(raw);
   const slug = fm.slug || file.replace(/\.md$/, '');
+  const todayStr = new Date().toISOString().split('T')[0];
+  if (fm.date && fm.date > todayStr) continue; // scheduled, not yet published
   urls.push({ loc: `${SITE_URL}/blog/${slug}`, lastmod: fm.date || null });
 }
 

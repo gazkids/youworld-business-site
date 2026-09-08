@@ -31,10 +31,16 @@ const posts = Object.entries(modules).map(([path, raw]) => {
 // Newest first.
 posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 
+// Scheduled publishing: hide posts whose date is still in the future.
+// Evaluated fresh on every page load, so a post becomes visible on its
+// own the moment the date arrives — no rebuild required for visibility.
+const now = new Date();
+const visiblePosts = posts.filter((p) => !p.date || new Date(p.date) <= now);
+
 export function getAllPosts() {
-  return posts;
+  return visiblePosts;
 }
 
 export function getPostBySlug(slug) {
-  return posts.find((p) => p.slug === slug) || null;
+  return visiblePosts.find((p) => p.slug === slug) || null;
 }
