@@ -18,7 +18,9 @@ export default function BlogList() {
       <Helmet>
         <title>ブログ | YouWorld エグゼクティブのための英語コーチング</title>
         <meta name="description" content="コンテクスチュアル・ランゲージの視点から、英語コミュニケーションと実務コーチングについて発信するブログです。" />
+        <link rel="canonical" href="https://www.youworldenglish.com/blog" />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.youworldenglish.com/blog" />
         <meta property="og:title" content="ブログ | YouWorld エグゼクティブのための英語コーチング" />
         <meta property="og:description" content="コンテクスチュアル・ランゲージの視点から、英語コミュニケーションと実務コーチングについて発信するブログです。" />
       </Helmet>

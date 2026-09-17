@@ -30,13 +30,16 @@ export default function BlogDetail() {
 
   const pageTitle = `${post.title} | YouWorld ブログ`;
   const description = post.excerpt || post.title;
+  const canonicalUrl = `https://www.youworldenglish.com/blog/${post.slug}`;
 
   return (
     <>
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalUrl} />
         <meta property="og:type" content="article" />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={description} />
         {post.image && <meta property="og:image" content={post.image} />}
