@@ -1,345 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouWorld | エグゼクティブのための英語コーチング</title>
-    <meta name="description" content="英語になると主導権が取れない。それは英語力の問題ではない。AIには崩せない圧力と、日本語の行間を英語に変換する力を、実務家のコーチングで。">
-    <link rel="canonical" href="https://www.youworldenglish.com/">
+import { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 
-    <link rel="icon" type="image/png" href="YouWorlodlogo.png">
-    <link rel="apple-touch-icon" href="YouWorlodlogo.png">
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PHBSVT43TY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-PHBSVT43TY');
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
-    <style>
-        /* ── Design Tokens ─────────────────────────────── */
-        :root {
-            --paper:  #FAFAF7;
-            --white:  #FFFFFF;
-            --ink:    #0C0C0E;
-            --navy:   #0F2056;
-            --gold:   #C4A26A;
-            --mist:   #F2EEE8;
-            --border: #E0DAD2;
-            --mid:    #71717A;
-            --light:  #A8A29E;
-        }
-
-        *, *::before, *::after { box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', 'Noto Sans JP', sans-serif;
-            background-color: var(--paper);
-            color: var(--ink);
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* ── Typography ────────────────────────────────── */
-        .t-display {
-            font-size: clamp(3rem, 7.5vw, 6.5rem);
-            font-weight: 900;
-            line-height: 1.08;
-            letter-spacing: -0.03em;
-        }
-        .t-h2 {
-            font-size: clamp(1.875rem, 3.5vw, 3rem);
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.025em;
-        }
-        .t-h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            line-height: 1.4;
-            letter-spacing: -0.01em;
-        }
-        .t-body {
-            font-size: 1.0625rem;
-            line-height: 1.8;
-            font-weight: 400;
-        }
-        .t-small {
-            font-size: 0.9375rem;
-            line-height: 1.65;
-        }
-
-        /* ── Eyebrow Labels ────────────────────────────── */
-        .eyebrow {
-            font-size: 0.6875rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--gold);
-            font-family: 'Inter', monospace;
-        }
-        .eyebrow-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            background: rgba(196,162,106,0.13);
-            border: 1px solid rgba(196,162,106,0.4);
-            color: var(--navy);
-            padding: 0.4rem 1rem;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-family: 'Inter', monospace;
-        }
-        .eyebrow-pill::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--gold);
-            flex-shrink: 0;
-        }
-
-        /* ── Signature: Gold Rule ──────────────────────── */
-        .gold-rule {
-            width: 36px;
-            height: 2.5px;
-            background: var(--gold);
-            border-radius: 2px;
-            display: block;
-        }
-
-        /* ── Signature: Gold Underline on "主導権" ─────── */
-        .key-word {
-            position: relative;
-            display: inline-block;
-            color: var(--navy);
-        }
-        .key-word::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0.06em;
-            height: 4px;
-            background: var(--gold);
-            border-radius: 2px;
-            opacity: 0.85;
-        }
-
-        /* ── Buttons ───────────────────────────────────── */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--navy);
-            color: #fff;
-            padding: 0.9rem 1.875rem;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 0.9375rem;
-            text-decoration: none;
-            transition: background 0.22s, box-shadow 0.22s, transform 0.22s;
-            letter-spacing: -0.005em;
-        }
-        .btn-primary:hover {
-            background: #1a3470;
-            box-shadow: 0 10px 28px rgba(15, 32, 86, 0.22);
-            transform: translateY(-1px);
-        }
-        .btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: transparent;
-            color: var(--ink);
-            padding: 0.875rem 1.875rem;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 0.9375rem;
-            text-decoration: none;
-            border: 1.5px solid var(--border);
-            transition: border-color 0.22s, background 0.22s;
-        }
-        .btn-ghost:hover {
-            border-color: var(--gold);
-            background: rgba(196,162,106,0.04);
-        }
-
-        /* ── Cards ─────────────────────────────────────── */
-        .card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            transition: border-color 0.25s, box-shadow 0.25s;
-        }
-        .card:hover {
-            border-color: rgba(196,162,106,0.45);
-            box-shadow: 0 12px 32px rgba(15, 32, 86, 0.07);
-        }
-
-        /* ── Navigation ────────────────────────────────── */
-        .nav-link {
-            font-size: 0.9375rem;
-            font-weight: 500;
-            color: var(--mid);
-            text-decoration: none;
-            transition: color 0.18s;
-            letter-spacing: 0.01em;
-        }
-        .nav-link:hover { color: var(--navy); }
-
-        /* ── Section backgrounds ───────────────────────── */
-        .bg-paper { background-color: var(--paper); }
-        .bg-mist  { background-color: var(--mist); }
-        .bg-white { background-color: var(--white); }
-        .bg-navy  { background-color: var(--navy); }
-
-        /* ── Audience list items ────────────────────────── */
-        .audience-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            padding: 1.5rem 0.5rem;
-            border-bottom: 1px solid var(--border);
-            transition: background 0.2s;
-        }
-        .audience-item:hover {
-            background: rgba(196,162,106,0.05);
-        }
-        .audience-num {
-            font-family: 'Inter', monospace;
-            font-size: 1.625rem;
-            font-weight: 800;
-            color: var(--gold);
-            letter-spacing: -0.02em;
-            margin-top: -2px;
-            flex-shrink: 0;
-            width: 2.75rem;
-            opacity: 0.85;
-        }
-
-        /* ── Service rows ───────────────────────────────── */
-        .service-item {
-            padding: 1.875rem 0;
-            border-bottom: 1px solid var(--border);
-            display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 2rem;
-            align-items: start;
-        }
-        @media (max-width: 768px) {
-            .service-item { grid-template-columns: 1fr; gap: 0.75rem; }
-        }
-
-        /* ── Comparison table ───────────────────────────── */
-        .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; }
-        /* ── AI Coach Finder chat bubbles ────────────────── */
-        .ai-chat-bubble {
-            max-width: 85%;
-            padding: 0.75rem 1.05rem;
-            border-radius: 14px;
-            font-size: 0.9375rem;
-            line-height: 1.65;
-            margin-bottom: 0.75rem;
-            white-space: pre-wrap;
-        }
-        .ai-chat-bubble--bot {
-            background: #fff;
-            border: 1px solid var(--border);
-            color: var(--ink);
-            margin-right: auto;
-            border-bottom-left-radius: 4px;
-        }
-        .ai-chat-bubble--user {
-            background: var(--navy);
-            color: #fff;
-            margin-left: auto;
-            border-bottom-right-radius: 4px;
-        }
-
-        .compare-table th, .compare-table td {
-            padding: 1.15rem 1.375rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.9375rem;
-        }
-        .compare-table th {
-            font-weight: 700;
-            font-size: 0.8125rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--mid);
-            background: var(--mist);
-        }
-        .compare-table td:first-child { font-weight: 600; color: var(--ink); }
-        .compare-table td:not(:first-child) { color: var(--mid); text-align: center; }
-        .compare-table .yw-col { background: rgba(15,32,86,0.03); font-weight: 700 !important; color: var(--navy) !important; }
-        .compare-table th.yw-col { background: var(--navy); color: #fff !important; }
-        .compare-table tr:last-child td { border-bottom: none; }
-
-        /* ── Hero ambient bg ────────────────────────────── */
-        .hero-ambient {
-            position: absolute;
-            top: 0; right: 0;
-            width: 55%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent 40%, var(--mist) 100%);
-            pointer-events: none;
-        }
-
-        /* ── Scroll indicator ───────────────────────────── */
-        @keyframes scrollPulse {
-            0%, 100% { transform: scaleY(0.5); opacity: 0.3; }
-            50%       { transform: scaleY(1);   opacity: 0.7; }
-        }
-        .scroll-line {
-            width: 1px;
-            height: 48px;
-            background: var(--ink);
-            transform-origin: top;
-            animation: scrollPulse 1.8s ease-in-out infinite;
-        }
-
-        /* ── Fade-up reveal ─────────────────────────────── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .fu  { animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both; }
-        .fu1 { animation-delay: 0.08s; }
-        .fu2 { animation-delay: 0.18s; }
-        .fu3 { animation-delay: 0.28s; }
-        .fu4 { animation-delay: 0.38s; }
-
-        /* ── Why-Human highlight box ─────────────────────── */
-        .why-box {
-            border-left: 3px solid var(--gold);
-            padding: 1rem 1.25rem;
-            background: rgba(196,162,106,0.05);
-            border-radius: 0 10px 10px 0;
-        }
-
-        /* ── Profile photo placeholder ──────────────────── */
-        .photo-placeholder {
-            background: linear-gradient(145deg, #E8E3DB, #CEC8BF);
-            display: flex; align-items: center; justify-content: center;
-            color: #A8A29E; font-size: 0.6875rem; font-family: monospace;
-        }
-    </style>
-</head>
-<body>
+const BODY_HTML = `
 
 <!-- ══════════════════════════════════════════
      NAVIGATION
@@ -1256,179 +918,205 @@
     </div>
 </footer>
 
-<script>
-(function () {
-    var COACH_META = {
-        sato:    { name: "Sato コーチ",    img: "Sato講師.png",    specialty: "経営コンサル×エグゼクティブ英語" },
-        shiota:  { name: "Shiota コーチ",  img: "Shiota講師.png",  specialty: "海外駐在ビジネス英語" },
-        kuno:    { name: "Kuno コーチ",    img: "Kuno講師.png",    specialty: "海外拠点統括×交渉英語" },
-        kaneko:  { name: "Kaneko コーチ",  img: "Kaneko講師.png",  specialty: "組織運営×ビジネス英語指導" },
-        iguchi:  { name: "Iguchi コーチ",  img: "Iguchi講師.png",  specialty: "航空現場×実用英語" },
-        urasaki: { name: "Urasaki コーチ", img: "Urasaki講師.png", specialty: "国際会議通訳×受験英語" }
+`;
+
+// Ports the original static homepage 1:1 (same HTML, same inline JS behavior)
+// into a single route of the unified React app. The AI-coach chat widget
+// logic below is the exact same logic that used to run as a plain <script>
+// tag at the bottom of the static page, now run once after mount.
+export default function Home() {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const COACH_META = {
+      sato:    { name: "Sato コーチ",    img: "Sato講師.png",    specialty: "経営コンサル×エグゼクティブ英語" },
+      shiota:  { name: "Shiota コーチ",  img: "Shiota講師.png",  specialty: "海外駐在ビジネス英語" },
+      kuno:    { name: "Kuno コーチ",    img: "Kuno講師.png",    specialty: "海外拠点統括×交渉英語" },
+      kaneko:  { name: "Kaneko コーチ",  img: "Kaneko講師.png",  specialty: "組織運営×ビジネス英語指導" },
+      iguchi:  { name: "Iguchi コーチ",  img: "Iguchi講師.png",  specialty: "航空現場×実用英語" },
+      urasaki: { name: "Urasaki コーチ", img: "Urasaki講師.png", specialty: "国際会議通訳×受験英語" }
     };
 
-    var FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeHYtSer9hRQO39VWE4qdqvHXp4qHEgjom61XseSdqNfS_SSA/viewform";
-    var FORM_ENTRY_ID = "entry.181834441";
+    const FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeHYtSer9hRQO39VWE4qdqvHXp4qHEgjom61XseSdqNfS_SSA/viewform";
+    const FORM_ENTRY_ID = "entry.181834441";
 
-    var chatWindow = document.getElementById("ai-chat-window");
-    var input      = document.getElementById("ai-coach-input");
-    var button     = document.getElementById("ai-coach-submit");
-    var errorBox   = document.getElementById("ai-coach-error");
-    var loading    = document.getElementById("ai-coach-loading");
+    const chatWindow = document.getElementById("ai-chat-window");
+    const input      = document.getElementById("ai-coach-input");
+    const button     = document.getElementById("ai-coach-submit");
+    const errorBox   = document.getElementById("ai-coach-error");
+    const loading    = document.getElementById("ai-coach-loading");
 
     if (!button) return;
 
-    var conversation = [];   // { role: "user"|"assistant", content: string } — sent to the API
-    var userTurns = 0;
-    var lastUserMessage = "";
-    var sessionId = generateSessionId();
+    let conversation = [];
+    let userTurns = 0;
+    let lastUserMessage = "";
+    const sessionId = generateSessionId();
 
     function send() {
-        var message = (input.value || "").trim();
-        if (!message) return;
+      const message = (input.value || "").trim();
+      if (!message) return;
 
-        errorBox.style.display = "none";
-        addBubble("user", message);
-        conversation.push({ role: "user", content: message });
-        lastUserMessage = message;
-        userTurns++;
-        input.value = "";
+      errorBox.style.display = "none";
+      addBubble("user", message);
+      conversation.push({ role: "user", content: message });
+      lastUserMessage = message;
+      userTurns++;
+      input.value = "";
 
-        setBusy(true);
+      setBusy(true);
 
-        fetch("/api/recommend-coach", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ messages: conversation, sessionId: sessionId })
-        })
-        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-        .then(function (result) {
-            setBusy(false);
+      fetch("/api/recommend-coach", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: conversation, sessionId: sessionId })
+      })
+        .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+        .then((result) => {
+          setBusy(false);
 
-            if (!result.ok || result.data.error) {
-                errorBox.textContent = (result.data && result.data.error) || "エラーが発生しました。時間をおいて再度お試しください。";
-                errorBox.style.display = "block";
-                return;
-            }
-
-            if (result.data.type === "question") {
-                addBubble("bot", result.data.message || "");
-                conversation.push({ role: "assistant", content: result.data.message || "" });
-            } else if (result.data.type === "recommendation") {
-                renderRecommendation(result.data.message || "", result.data.recommendations || []);
-                conversation.push({ role: "assistant", content: result.data.message || "" });
-            }
-        })
-        .catch(function () {
-            setBusy(false);
-            errorBox.textContent = "通信エラーが発生しました。時間をおいて再度お試しください。";
+          if (!result.ok || result.data.error) {
+            errorBox.textContent = (result.data && result.data.error) || "エラーが発生しました。時間をおいて再度お試しください。";
             errorBox.style.display = "block";
+            return;
+          }
+
+          if (result.data.type === "question") {
+            addBubble("bot", result.data.message || "");
+            conversation.push({ role: "assistant", content: result.data.message || "" });
+          } else if (result.data.type === "recommendation") {
+            renderRecommendation(result.data.message || "", result.data.recommendations || []);
+            conversation.push({ role: "assistant", content: result.data.message || "" });
+          }
+        })
+        .catch(() => {
+          setBusy(false);
+          errorBox.textContent = "通信エラーが発生しました。時間をおいて再度お試しください。";
+          errorBox.style.display = "block";
         });
     }
 
     button.addEventListener("click", send);
-    input.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" && !e.shiftKey) {
-            e.preventDefault();
-            send();
-        }
-    });
+    const onKeydown = (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        send();
+      }
+    };
+    input.addEventListener("keydown", onKeydown);
 
     function setBusy(isBusy) {
-        button.disabled = isBusy;
-        input.disabled = isBusy;
-        button.style.opacity = isBusy ? "0.6" : "1";
-        loading.style.display = isBusy ? "block" : "none";
-        if (isBusy) scrollToBottom();
+      button.disabled = isBusy;
+      input.disabled = isBusy;
+      button.style.opacity = isBusy ? "0.6" : "1";
+      loading.style.display = isBusy ? "block" : "none";
+      if (isBusy) scrollToBottom();
     }
 
     function addBubble(role, text) {
-        var div = document.createElement("div");
-        div.className = "ai-chat-bubble " + (role === "user" ? "ai-chat-bubble--user" : "ai-chat-bubble--bot");
-        div.textContent = text;
-        chatWindow.appendChild(div);
-        scrollToBottom();
+      const div = document.createElement("div");
+      div.className = "ai-chat-bubble " + (role === "user" ? "ai-chat-bubble--user" : "ai-chat-bubble--bot");
+      div.textContent = text;
+      chatWindow.appendChild(div);
+      scrollToBottom();
     }
 
     function renderRecommendation(introMessage, recommendations) {
-        if (introMessage) addBubble("bot", introMessage);
+      if (introMessage) addBubble("bot", introMessage);
 
-        if (!recommendations.length) {
-            errorBox.textContent = "該当するコーチを見つけられませんでした。";
-            errorBox.style.display = "block";
-            return;
-        }
+      if (!recommendations.length) {
+        errorBox.textContent = "該当するコーチを見つけられませんでした。";
+        errorBox.style.display = "block";
+        return;
+      }
 
-        var card = document.createElement("div");
-        card.style.marginBottom = "0.75rem";
+      const card = document.createElement("div");
+      card.style.marginBottom = "0.75rem";
 
-        var html = "";
-        recommendations.forEach(function (rec) {
-            var meta = COACH_META[rec.coach.id];
-            if (!meta) return;
+      let html = "";
+      recommendations.forEach((rec) => {
+        const meta = COACH_META[rec.coach.id];
+        if (!meta) return;
 
-            html +=
-                '<div style="display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:0.875rem;">' +
-                    '<div style="flex-shrink:0;width:56px;height:56px;border-radius:50%;overflow:hidden;background:var(--border);">' +
-                        '<img src="' + meta.img + '" alt="' + meta.name + '" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">' +
-                    '</div>' +
-                    '<div style="flex:1;">' +
-                        '<p style="font-size:0.8125rem;font-weight:600;color:var(--gold);margin-bottom:0.125rem;">' + escapeHtml(meta.specialty) + '</p>' +
-                        '<h5 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.375rem;">' + escapeHtml(meta.name) + '</h5>' +
-                        '<p class="t-small text-[var(--mid)]" style="margin-bottom:0.75rem;">' + escapeHtml(rec.reason) + '</p>' +
-                        '<a href="#coach-' + rec.coach.id + '" style="font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">プロフィールを見る →</a>' +
-                    '</div>' +
-                '</div>';
-        });
-
-        var formUrl = buildFormUrl(recommendations);
         html +=
-            '<a href="' + formUrl + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.25rem;background:var(--navy);color:#fff;font-weight:700;font-size:0.9375rem;padding:0.75rem 1.375rem;border-radius:10px;text-decoration:none;">' +
-                'お問い合わせフォームを開く（内容自動入力）' +
-            '</a>';
+          '<div style="display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:0.875rem;">' +
+            '<div style="flex-shrink:0;width:56px;height:56px;border-radius:50%;overflow:hidden;background:var(--border);">' +
+              '<img src="' + meta.img + '" alt="' + meta.name + '" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">' +
+            '</div>' +
+            '<div style="flex:1;">' +
+              '<p style="font-size:0.8125rem;font-weight:600;color:var(--gold);margin-bottom:0.125rem;">' + escapeHtml(meta.specialty) + '</p>' +
+              '<h5 style="font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:0.375rem;">' + escapeHtml(meta.name) + '</h5>' +
+              '<p class="t-small text-[var(--mid)]" style="margin-bottom:0.75rem;">' + escapeHtml(rec.reason) + '</p>' +
+              '<a href="#coach-' + rec.coach.id + '" style="font-size:0.8125rem;font-weight:700;color:var(--navy);text-decoration:none;">プロフィールを見る →</a>' +
+            '</div>' +
+          '</div>';
+      });
 
-        card.innerHTML = html;
-        chatWindow.appendChild(card);
-        scrollToBottom();
+      const formUrl = buildFormUrl(recommendations);
+      html +=
+        '<a href="' + formUrl + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.25rem;background:var(--navy);color:#fff;font-weight:700;font-size:0.9375rem;padding:0.75rem 1.375rem;border-radius:10px;text-decoration:none;">' +
+          'お問い合わせフォームを開く（内容自動入力）' +
+        '</a>';
+
+      card.innerHTML = html;
+      chatWindow.appendChild(card);
+      scrollToBottom();
     }
 
     function buildFormUrl(recommendations) {
-        var lines = ["【AIコーチ診断結果】", "ご相談内容：" + truncate(lastUserMessage, 200)];
+      const lines = ["【AIコーチ診断結果】", "ご相談内容：" + truncate(lastUserMessage, 200)];
 
-        recommendations.forEach(function (rec) {
-            var meta = COACH_META[rec.coach.id];
-            if (!meta) return;
-            lines.push("おすすめコーチ：" + meta.name + "（" + meta.specialty + "）");
-            lines.push("提案理由：" + truncate(rec.reason, 200));
-        });
+      recommendations.forEach((rec) => {
+        const meta = COACH_META[rec.coach.id];
+        if (!meta) return;
+        lines.push("おすすめコーチ：" + meta.name + "（" + meta.specialty + "）");
+        lines.push("提案理由：" + truncate(rec.reason, 200));
+      });
 
-        var summary = lines.join("\n");
-        return FORM_BASE_URL + "?usp=pp_url&" + FORM_ENTRY_ID + "=" + encodeURIComponent(summary);
+      const summary = lines.join("\n");
+      return FORM_BASE_URL + "?usp=pp_url&" + FORM_ENTRY_ID + "=" + encodeURIComponent(summary);
     }
 
     function generateSessionId() {
-        if (window.crypto && typeof window.crypto.randomUUID === "function") {
-            return window.crypto.randomUUID();
-        }
-        return "sess-" + Date.now() + "-" + Math.random().toString(36).slice(2, 10);
+      if (window.crypto && typeof window.crypto.randomUUID === "function") {
+        return window.crypto.randomUUID();
+      }
+      return "sess-" + Date.now() + "-" + Math.random().toString(36).slice(2, 10);
     }
 
     function truncate(str, maxLen) {
-        str = str || "";
-        return str.length > maxLen ? str.slice(0, maxLen) + "…" : str;
+      str = str || "";
+      return str.length > maxLen ? str.slice(0, maxLen) + "…" : str;
     }
 
     function scrollToBottom() {
-        chatWindow.scrollTop = chatWindow.scrollHeight;
+      chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 
     function escapeHtml(str) {
-        var div = document.createElement("div");
-        div.textContent = str || "";
-        return div.innerHTML;
+      const div = document.createElement("div");
+      div.textContent = str || "";
+      return div.innerHTML;
     }
-})();
-</script>
 
-</body>
-</html>
+    return () => {
+      button.removeEventListener("click", send);
+      input.removeEventListener("keydown", onKeydown);
+    };
+  }, []);
+
+  return (
+    <>
+      <Helmet>
+        <title>YouWorld | エグゼクティブのための英語コーチング</title>
+        <meta name="description" content="英語になると主導権が取れない。それは英語力の問題ではない。AIには崩せない圧力と、日本語の行間を英語に変換する力を、実務家のコーチングで。" />
+        <link rel="canonical" href="https://www.youworldenglish.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.youworldenglish.com/" />
+        <meta property="og:title" content="YouWorld | エグゼクティブのための英語コーチング" />
+        <meta property="og:description" content="英語になると主導権が取れない。それは英語力の問題ではない。AIには崩せない圧力と、日本語の行間を英語に変換する力を、実務家のコーチングで。" />
+      </Helmet>
+      <div ref={containerRef} dangerouslySetInnerHTML={{ __html: BODY_HTML }} />
+    </>
+  );
+}

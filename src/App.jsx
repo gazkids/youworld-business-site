@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import ScrollToTop from './ScrollToTop.jsx';
-import BlogList from './BlogList.jsx';
-import BlogDetail from './BlogDetail.jsx';
+import ScrollToTop from './blog/ScrollToTop.jsx';
+import Home from './Home.jsx';
+import BlogList from './blog/BlogList.jsx';
+import BlogDetail from './blog/BlogDetail.jsx';
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/blog" element={<BlogList />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
         </Routes>
