@@ -59,7 +59,7 @@ const BODY_HTML = `
 <section id="top" class="relative min-h-screen flex flex-col justify-center pt-16 overflow-hidden bg-paper">
     <div class="hero-ambient"></div>
 
-    <a href="https://forbesjapan.com/articles/detail/97096" target="_blank" rel="noopener" class="absolute top-24 right-6 lg:right-8 z-20 fu" style="max-width:320px;display:block;text-decoration:none;">
+    <a href="https://forbesjapan.com/articles/detail/97096" target="_blank" rel="noopener" class="hidden md:block absolute top-24 right-6 lg:right-8 z-20 fu" style="max-width:320px;text-decoration:none;">
         <div style="border:1px solid var(--border);background:rgba(255,255,255,0.85);backdrop-filter:blur(4px);border-radius:16px;padding:0.75rem 1.125rem;transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.boxShadow='0 8px 20px rgba(15,32,86,0.10)';" onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none';">
             <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.03em;color:var(--navy);line-height:1.55;">
                 Forbes JAPAN 寄稿
