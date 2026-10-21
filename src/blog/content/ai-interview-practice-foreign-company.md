@@ -74,4 +74,4 @@ excerpt: "外資系への転職準備で、ChatGPTなどの生成AIを面接練�
 
 ---
 
-AIが指摘できないコミュニケーションの落とし穴については、[ChatGPTを最強の面接官にする方法](/blog/chatgpt-interview-coach-communication-gap)もあわせてご覧ください。
+AIが指摘できないコミュニケーションの落とし穴については、[ChatGPTを最強の面接官にする方法](/blog/chatgpt-interview-coach-communication-gap)もあわせてご覧ください。外資転職で英語力がどこまで見られるのかは、[外資系転職で求められる英語力とは？](/blog/foreign-company-english-requirement)で解説しています。
